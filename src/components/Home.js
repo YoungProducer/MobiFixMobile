@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import DropDownMenu from '../containers/DropDownMenu'
 import Header from './Header'
 import ClosedClub from './ClosedClub'
 
@@ -11,13 +12,13 @@ const StyledSiteBlock = styled.div`
 
 const Home = () => {
     return(
-        <div>
+        <>
             <StyledSiteBlock>
-
+                <DropDownMenu />
                 <Header />
                 <ClosedClub />
             </StyledSiteBlock>
-        </div>
+        </>
     )
 }
 
