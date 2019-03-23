@@ -4,109 +4,17 @@ import styled from 'styled-components'
 
 import PushUpNotification from './PushUpNotification'
 
-const StyledWrapper = styled.div`
-    background-color: #000;
-    width: 100%;
-    height: calc(100vh - 38px);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-`
-
-const StyledText = styled.h1`
-    color: #000;
-    font-size: 150%;
-    width: 90%;
-    text-align: center;
-`
-
-const StyledForm = styled.div`
-    position: relative;
-    width: 80%;
-    height: 80%;
-    background-color: #fff;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    border-radius: 10px;
-`
-
-const InputFrame = posed.div({
-
-})
-
-const StyledInputFrame = styled(InputFrame)`
-    position: relative;
-    width: 200px;
-`
-
-const StyledInput = styled.input`
-    height: 25px;
-    width: 200px;
-    outline: none;
-    border: none;
-    z-index: 1;
-`
-
-const StyledPassiveLine = styled.div`
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    background-color: #bbb;
-    width: 100%;
-    height: 1px;
-    margin: auto;
-`
-
-const ActiveLine = posed.div({
-    init: {
-        width: '0%',
-        height: 0
-    },
-    active: {
-        width: '100%',
-        height: 2
-    }
-})
-
-const StyledActiveLine = styled(ActiveLine)`
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    margin: auto;
-    background-color: #DF564E;
-`
-
-const Button = posed.input({
-    init: { 
-        backgroundColor: '#DF564E',
-        transition: {
-            duration: 400,
-            type: 'tween'
-        }
-    },
-    active: {
-        backgroundColor: '#ff8726',
-        transition: {
-            duration: 400,
-            type: 'tween'
-        }
-    }
-})
-
-const StyledButton = styled(Button)`
-    width: 200px;
-    height: 30px;
-    border: none;
-    border-radius: 15px;
-    background-color: #DF564E;
-    color: #fff;
-    outline: none;
-`
+import { 
+    StyledWrapper,
+    StyledText,
+    StyledForm,
+    StyledInputFrame,
+    StyledInput,
+    StyledPassiveLine,
+    StyledActiveLine,
+    StyledButton
+} 
+from './ClosedClub.styled'
 
 class ClosedClub extends React.Component {
     constructor(props) {
@@ -144,7 +52,7 @@ class ClosedClub extends React.Component {
             this.setState({ nameInputActive: !this.state.nameInputActive })
         }
       
-        if (this.state.numberInputActive && !this.state.numberInputActive.length) {
+        if (this.state.numberInputActive && !this.state.numberInputValue.length) {
             this.setState({ numberInputActive: !this.state.numberInputActive })
         }
     }
@@ -155,7 +63,7 @@ class ClosedClub extends React.Component {
         }
       
         if (this.state.nameInputActive && !this.state.nameInputValue.length) {
-        this.setState({ nameInputActive: !this.state.nameInputActive });
+            this.setState({ nameInputActive: !this.state.nameInputActive });
         }
     }
 
@@ -163,57 +71,63 @@ class ClosedClub extends React.Component {
         this.setState({
             nameInputValue: event.target.value
         })
+
+        console.log(this.state.nameInputActive)
+        console.log(this.state.nameInputValue)
     }
 
     _numberInputOnChange(event) {
         this.setState({
             numberInputValue: event.target.value
         })
+
+        console.log(this.state.numberInputActive)
+        console.log(this.state.numberInputValue)
     }
 
     _handleClickOutside(event) {
         if (
-            this.nameInput &&
-            !this.nameInput.contains(event.target) &&
-            (this.numberInput && !this.numberInput.contains(event.target)) &&
+            (this.nameInput &&
+            !this.nameInput.contains(event.target)) &&
+            (this.numberInput && 
+            !this.numberInput.contains(event.target)) &&
             !this.state.formSuccess
         ) {
             if (!this.state.nameInputValue.length && this.state.nameInputActive) {
-            this.setState({ nameInputActive: !this.state.nameInputActive });
+                this.setState({ nameInputActive: !this.state.nameInputActive });
             }
 
             if (!this.state.numberInputValue.length && this.state.numberInputActive) {
-            this.setState({ numberInputActive: !this.state.numberInputActive });
+                this.setState({ numberInputActive: !this.state.numberInputActive });
             }
         }
     }
 
     _buttonOnClick() {
-        this.setState({
-            confirmed: true
-        })
-        window.setTimeout(() => {
-            this.setState({
-                confirmed: false
-            })
-        }, 400)
-
-        this.setState({
-            sended: true
-        })
-        window.setTimeout(() => {
-            this.setState({
-                sended: false
-            })
-        }, 2000)
-
         if (this.state.nameInputActive && this.state.numberInputActive) {
             this.setState({
                 nameInputActive: !this.state.nameInputActive,
                 numberInputActive: !this.state.numberInputActive
-            });
-        
-        
+            });        
+            
+            this.setState({
+                confirmed: true
+            })
+            window.setTimeout(() => {
+                this.setState({
+                    confirmed: false
+                })
+            }, 400)
+    
+            this.setState({
+                sended: true
+            })
+            window.setTimeout(() => {
+                this.setState({
+                    sended: false
+                })
+            }, 2000)
+
             this.setState({ nameInputValue: "", numberInputValue: "" });
             this.nameInput.value = "";
             this.numberInput.value = "";
@@ -261,10 +175,9 @@ class ClosedClub extends React.Component {
 
                     <StyledButton 
                         type="submit" 
-                        value="Надіслати"
                         pose={this.state.confirmed ? 'active' : 'init'}
                         onClick={this._buttonOnClick}
-                    />
+                    >Надіслати</StyledButton>
                 </StyledForm>
             </StyledWrapper>
         )

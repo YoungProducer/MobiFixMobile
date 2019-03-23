@@ -4,11 +4,11 @@ import styled from 'styled-components'
 import DropDownMenu from '../containers/DropDownMenu'
 import Header from './Header'
 import ClosedClub from './ClosedClub'
+import AccessoriesLink from './AccessoriesLink'
 
-const StyledSiteBlock = styled.div`
-    height: 100vh;
-    width: 100%;
-`
+import {
+    StyledSiteBlock
+} from './Home.styled'
 
 const Home = () => {
     return(
@@ -17,6 +17,7 @@ const Home = () => {
                 <DropDownMenu />
                 <Header />
                 <ClosedClub />
+                <AccessoriesLink />
             </StyledSiteBlock>
         </>
     )
