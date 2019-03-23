@@ -10,7 +10,13 @@ const putDispatchToProps = (dispatch) => {
     }
 }
 
+const putStateToProps = (state) => {
+    return {
+        active: state.active
+    }
+}
+
 export default connect (
-    null, 
+    putStateToProps, 
     putDispatchToProps
 )(Burger)

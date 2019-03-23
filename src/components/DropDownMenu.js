@@ -1,28 +1,124 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 import posed from 'react-pose'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import { 
-    StyledList
+    StyledListWrapper,
+    StyledList,
+    StyledListItem,
+    StyledLink
 } from './DropDownMenu.styled'
 
-class DropDownMenu extends React.Component {
-    render() {
-        const { burgerState } = this.props
+const phoneList = [
+    {name: 'iPhone5S' , id: 1},
+    {name: 'iPhoneSE' , id: 2},
+    {name: 'iPhone6'  , id: 3},
+    {name: 'iPhone6+' , id: 4},
+    {name: 'iPhone6S' , id: 5},
+    {name: 'iPhone6S+', id: 6},
+    {name: 'iPhone7'  , id: 7},
+    {name: 'iPhone7+' , id: 8},
+    {name: 'iPhone8'  , id: 9},
+    {name: 'iPhone8+' , id: 10},
+]
 
-        console.log(this.props)
+class DropDownMenu extends React.Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            phones: phoneList,
+            phonesList: false
+        }
+    }
+
+    render() {
+        const { burgerState, phonesListState, onTogglePhonesListState } = this.props
 
         return(
             <>
-                <StyledList pose={burgerState ? 'active' : 'init'}/>
+                <StyledListWrapper pose={burgerState ? 'lwActive' : 'lwInit'}>
+                    <StyledList pose={burgerState && !phonesListState ? 'listActive' : 'listInit'}>
+                        <StyledListItem 
+                            onClick={() => {
+                                onTogglePhonesListState(true)
+                            }}
+                        >
+                            <StyledLink>
+                                Ремонт
+                            </StyledLink>
+                        </StyledListItem>
+
+                        <StyledListItem>
+                            <NavLink
+                                to="/accessories"
+                            >
+                                <StyledLink>
+                                    Аксесуари
+                                </StyledLink>
+                            </NavLink>
+                        </StyledListItem>
+
+                        <StyledListItem>
+                            <NavLink
+                                to="/needtoknow"
+                            >
+                                <StyledLink>
+                                    Необхідно знати
+                                </StyledLink>
+                            </NavLink>
+                        </StyledListItem>
+
+                        <StyledListItem>
+                            <NavLink
+                                to="/contacts"
+                            >
+                                <StyledLink>
+                                    Контакти
+                                </StyledLink>
+                            </NavLink>
+                        </StyledListItem>
+
+                        <StyledListItem>
+                            <NavLink
+                                to="/about"
+                            >
+                                <StyledLink>
+                                    Чому ми
+                                </StyledLink>
+                            </NavLink>
+                        </StyledListItem>
+                    </StyledList>
+
+                    <StyledList pose={burgerState && phonesListState ? 'listActive' : 'listInit'}>
+                        {this.state.phones.map(phone => {
+                            return (
+                                <StyledListItem
+                                    key={phone.id}
+                                >
+                                    <NavLink
+                                        to={"/services/" + phone.name}
+                                    >
+                                        <StyledLink>
+                                            {phone.name}
+                                        </StyledLink>
+                                    </NavLink>
+                                </StyledListItem>
+                            )
+                        })}
+                    </StyledList>
+                </StyledListWrapper>
             </>
         )
     }
 }
 
 DropDownMenu.propTypes = {
-    burgerState: PropTypes.bool.isRequired
+    onTogglePhonesListState: PropTypes.func.isRequired,
+    burgerState: PropTypes.bool.isRequired,
+    phonesListState: PropTypes.bool.isRequired
 }
 
 export default DropDownMenu

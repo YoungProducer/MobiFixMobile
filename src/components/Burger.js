@@ -13,42 +13,26 @@ import {
 } from './Burger.styled'
 
 class Burger extends React.Component {
-    constructor() {
-        super()
-
-        this.state = { 
-            active: false
-        }
-
-        this._onClickHandle = this._onClickHandle.bind(this)
-    }
-
-    _onClickHandle() {
-        this.setState({active: !this.state.active})
-    }
-
     render() {
-        const { onToggleBurgerState } = this.props
-
-        console.log(this.props)
+        const { active, onToggleBurgerState } = this.props
 
         return(
             <StyledWrapper 
-                pose={this.state.active ? 'slided' : 'init'} 
+                pose={active ? 'slided' : 'init'} 
                 onClick={() => {
-                    this._onClickHandle()
-                    onToggleBurgerState(!this.state.active)
+                    onToggleBurgerState(!active)
                 }}>
-                <StyledStick pose={this.state.active ? 'activetop' : 'init'}/>
-                <StyledStick pose={this.state.active ? 'active' : 'init'}/>
-                <StyledStick pose={this.state.active ? 'activebottom' : 'init'}/>
+                <StyledStick pose={active ? 'activetop' : 'init'}/>
+                <StyledStick pose={active ? 'active' : 'init'}/>
+                <StyledStick pose={active ? 'activebottom' : 'init'}/>
             </StyledWrapper>
         )
     }
 }
 
 Burger.propTypes = {
-    onToggleBurgerState: PropTypes.func.isRequired
+    onToggleBurgerState: PropTypes.func.isRequired,
+    active: PropTypes.bool.isRequired
 }
 
 export default Burger

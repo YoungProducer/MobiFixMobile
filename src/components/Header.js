@@ -12,7 +12,6 @@ class Header extends React.Component {
     render() {
         return(
             <StyledBlock>
-                <Burger />
                 <StyledLogo>
                     MobiFix
                 </StyledLogo>

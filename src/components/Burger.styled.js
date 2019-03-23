@@ -3,10 +3,10 @@ import styled from 'styled-components'
 
 export const Wrapper = posed.div({
     init: {
-        x: 20
+        x: 20,
     },
     slided: {
-        x: window.innerWidth - 20 - 20
+        x: window.innerWidth - 20 - 20,
     }
 })
 
