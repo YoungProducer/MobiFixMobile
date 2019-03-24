@@ -5,12 +5,14 @@ import ReactFullpage from '@fullpage/react-fullpage'
 import 'fullpage.js/vendors/scrolloverflow'
 
 
+import PushUpNotification from '../containers/PushUpNotification'
 import Burger from '../containers/Burger'
 import DropDownMenu from '../containers/DropDownMenu'
 import Header from './Header'
-import ClosedClub from './ClosedClub'
+import ClosedClub from '../containers/ClosedClub'
 import AccessoriesDescription from './AccessoriesDescription'
 import RepairsAdvantages from './RepairsAdvantages'
+import Footer from './Footer'
 
 import {
     StyledSiteBlock
@@ -32,6 +34,7 @@ class Home extends React.Component {
     render() {
         return(
             <>
+                <PushUpNotification />
                 <Burger />
                 <DropDownMenu />
                 <Header />
@@ -50,6 +53,7 @@ class Home extends React.Component {
                                     <StyledSiteBlock className="section">
                                         <RepairsAdvantages />
                                     </StyledSiteBlock>
+                                    <Footer usefp/>
                                 </div>
                             </>
                         )

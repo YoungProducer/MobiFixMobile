@@ -24,10 +24,10 @@ class AccessoriesDescription extends React.Component {
                             <StyledTextWrapper>
                                 Вибирайте аксесуари на свій смак
                             </StyledTextWrapper>
-                            <ImageWrapper src={headphones} width="150px"/>
+                            <ImageWrapper src={headphones} width={150}/>
                         </StyledInfoBlock>
                         <StyledInfoBlock>
-                            <ImageWrapper src={phonecase} width="150px"/>
+                            <ImageWrapper src={phonecase} width={150}/>
                             <StyledTextWrapper>
                                 Починаючи від зарядних пристроїв і до чохлів
                             </StyledTextWrapper>

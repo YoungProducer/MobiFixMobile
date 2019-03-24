@@ -1,8 +1,5 @@
 import React from 'react'
-import posed from 'react-pose'
-import styled from 'styled-components'
-
-import PushUpNotification from './PushUpNotification'
+import PropsTypes from 'prop-types'
 
 import { 
     StyledWrapper,
@@ -71,18 +68,12 @@ class ClosedClub extends React.Component {
         this.setState({
             nameInputValue: event.target.value
         })
-
-        console.log(this.state.nameInputActive)
-        console.log(this.state.nameInputValue)
     }
 
     _numberInputOnChange(event) {
         this.setState({
             numberInputValue: event.target.value
         })
-
-        console.log(this.state.numberInputActive)
-        console.log(this.state.numberInputValue)
     }
 
     _handleClickOutside(event) {
@@ -104,12 +95,15 @@ class ClosedClub extends React.Component {
     }
 
     _buttonOnClick() {
+        const { onTogglePushNotificationState } = this.props
+
         if (this.state.nameInputActive && this.state.numberInputActive) {
             this.setState({
                 nameInputActive: !this.state.nameInputActive,
                 numberInputActive: !this.state.numberInputActive
             });        
             
+
             this.setState({
                 confirmed: true
             })
@@ -119,13 +113,10 @@ class ClosedClub extends React.Component {
                 })
             }, 400)
     
-            this.setState({
-                sended: true
-            })
+            onTogglePushNotificationState(true)
+
             window.setTimeout(() => {
-                this.setState({
-                    sended: false
-                })
+                onTogglePushNotificationState(false)
             }, 2000)
 
             this.setState({ nameInputValue: "", numberInputValue: "" });
@@ -137,8 +128,6 @@ class ClosedClub extends React.Component {
     render() {
         return(
             <StyledWrapper>
-                <PushUpNotification visible={this.state.sended}/>
-
                 <StyledForm>
                 
                     <StyledText>
@@ -176,12 +165,18 @@ class ClosedClub extends React.Component {
                     <StyledButton 
                         type="submit" 
                         pose={this.state.confirmed ? 'active' : 'init'}
-                        onClick={this._buttonOnClick}
+                        onClick={() => {
+                            this._buttonOnClick()
+                        }}
                     >Надіслати</StyledButton>
                 </StyledForm>
             </StyledWrapper>
         )
     }
+}
+
+ClosedClub.propTypes = {
+    onTogglePushNotificationState: PropsTypes.func.isRequired
 }
 
 export default ClosedClub

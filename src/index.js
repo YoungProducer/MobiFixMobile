@@ -1,15 +1,13 @@
 import React from 'react'
 import { render } from 'react-dom'
-import { createStore } from 'redux'
+import { createStore, combineReducers } from 'redux'
 import { Provider } from 'react-redux'
+
+import rootReducer from './store/reducers'
 
 import App from './App'
 
-import combineReducers from './store/reducers'
-
-import burgerStateReducer from './store/DropDownMenu/reducers'
-
-const store = createStore(burgerStateReducer)
+const store = createStore(rootReducer)
 
 render(
     <Provider store={store}>

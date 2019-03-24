@@ -1,6 +1,5 @@
 import React from 'react'
-import posed from 'react-pose'
-import styled from 'styled-components'
+import PropsTypes from 'prop-types'
 
 import '../img/galc.svg'
 
@@ -11,18 +10,12 @@ import {
 } from './PushUpNotification.styled'
 
 class PushUpNotification extends React.Component {
-    constructor() {
-        super()
-
-        this.state = {
-            visible: false
-        }
-    }
-
     render() {
+        const { visible } = this.props
+
         return(
             <>
-                <StyledWrapper pose={this.props.visible ? 'visible' : 'init'}>
+                <StyledWrapper pose={visible ? 'visible' : 'init'}>
                     <StyledText>
                         Надіслано
                     </StyledText>
@@ -31,6 +24,10 @@ class PushUpNotification extends React.Component {
             </>
         )
     }
+}
+
+PushUpNotification.propTypes = {
+    visible: PropsTypes.bool.isRequired
 }
 
 export default PushUpNotification

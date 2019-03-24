@@ -12,7 +12,7 @@ const putDispatchToProps = (dispatch) => {
 
 const putStateToProps = (state) => {
     return {
-        active: state.active
+        active: state.burgerStateReducer.active
     }
 }
 

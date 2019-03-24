@@ -39,4 +39,5 @@ export const StyledText = styled.h2`
 export const StyledGalc = styled.object`
     margin-left: 5px;
     height: 25px;
+    opacity: 1.0;
 `

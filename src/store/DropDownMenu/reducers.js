@@ -1,15 +1,17 @@
 import './actions'
 import { 
     TOGGLE_BURGER_STATE, 
-    TOGGLE_PHONES_LIST_STATE 
+    TOGGLE_PHONES_LIST_STATE,
+    CHANGE_SELECTED_PHONE
 } from './constants';
 
-const initialState = {
+const initialBurgerState = {
     active: false,
-    phonesListState: false
+    phonesListState: false,
+    selectedPhone: ''
 }
 
-const burgerStateReducer = (state = initialState, action) => {
+const burgerStateReducer = (state = initialBurgerState, action) => {
     switch(action.type) {
         case TOGGLE_BURGER_STATE:
             if (!state.phonesListState)
@@ -20,6 +22,9 @@ const burgerStateReducer = (state = initialState, action) => {
 
         case TOGGLE_PHONES_LIST_STATE:
             return { ...state, phonesListState: action.payload}
+
+        case CHANGE_SELECTED_PHONE:
+            return { ...state, selectedPhone: action.payload}
 
         default: 
             return state

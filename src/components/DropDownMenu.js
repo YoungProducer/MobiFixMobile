@@ -1,8 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import posed from 'react-pose'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
 
 import { 
     StyledListWrapper,
@@ -35,7 +33,7 @@ class DropDownMenu extends React.Component {
     }
 
     render() {
-        const { burgerState, phonesListState, onTogglePhonesListState } = this.props
+        const { burgerState, phonesListState, onTogglePhonesListState, onChangeSelectedPhone } = this.props
 
         return(
             <>
@@ -97,6 +95,9 @@ class DropDownMenu extends React.Component {
                             return (
                                 <StyledListItem
                                     key={phone.id}
+                                    onClick={() => {
+                                        onChangeSelectedPhone(phone.name)
+                                    }}
                                 >
                                     <NavLink
                                         to={"/services/" + phone.name}
@@ -116,6 +117,7 @@ class DropDownMenu extends React.Component {
 }
 
 DropDownMenu.propTypes = {
+    onChangeSelectedPhone: PropTypes.func.isRequired,
     onTogglePhonesListState: PropTypes.func.isRequired,
     burgerState: PropTypes.bool.isRequired,
     phonesListState: PropTypes.bool.isRequired

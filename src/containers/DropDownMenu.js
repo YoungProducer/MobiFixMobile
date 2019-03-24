@@ -1,20 +1,22 @@
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-import { togglePhonesListState } from '../store/DropDownMenu/actions'
+import { togglePhonesListState, changeSelectedPhone } from '../store/DropDownMenu/actions'
 
 import DropDownMenu from '../components/DropDownMenu'
 
 const putStateToProps = (state) => {
     return {
-        burgerState: state.active,
-        phonesListState: state.phonesListState
+        burgerState: state.burgerStateReducer.active,
+        phonesListState: state.burgerStateReducer.phonesListState,
+        selectedPhone: state.burgerStateReducer.selectedPhone
     }
 }
 
 const putDispatchToProps = (dispatch) => {
     return {
-        onTogglePhonesListState: bindActionCreators(togglePhonesListState, dispatch)
+        onTogglePhonesListState: bindActionCreators(togglePhonesListState, dispatch),
+        onChangeSelectedPhone: bindActionCreators(changeSelectedPhone, dispatch)
     }
 }
 
