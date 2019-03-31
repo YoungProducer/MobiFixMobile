@@ -12,14 +12,14 @@ class App extends React.Component {
     render() {
 
         return(
-            <HashRouter>
+            <Router>
                 <Switch>
                     <Route path="/" component={Home} exact/>
                     <Route path="/services" component={Services} />
                     <Route path="/accessories" component={Accessories} />
                     <Route path="/about" component={About} />
                 </Switch>
-            </HashRouter>
+            </Router>
         )
     }
 }

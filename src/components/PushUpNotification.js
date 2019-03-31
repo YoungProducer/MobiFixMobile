@@ -19,7 +19,7 @@ class PushUpNotification extends React.Component {
                     <StyledText>
                         Надіслано
                     </StyledText>
-                    <StyledGalc data="img/galc.svg" type="image/svg+xml"></StyledGalc>
+                    <StyledGalc data="../img/galc.svg" type="image/svg+xml"></StyledGalc>
                 </StyledWrapper>
             </>
         )

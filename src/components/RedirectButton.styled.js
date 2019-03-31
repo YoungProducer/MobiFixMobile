@@ -6,7 +6,7 @@ export const StyledButton = styled.button`
     border: none;
     border-radius: 15px;
     background-color: #55b559;
-    box-shadow: 0 5px 5px 0px #4ea052;
+    ${'' /* box-shadow: 0 5px 5px 0px #4ea052; */}
     outline: none;
 `
 

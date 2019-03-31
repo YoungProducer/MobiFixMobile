@@ -21,7 +21,7 @@ const burgerStateReducer = (state = initialBurgerState, action) => {
                 return { ...state, active: action.payload, phonesListState: false}
 
         case TOGGLE_PHONES_LIST_STATE:
-            return { ...state, phonesListState: action.payload}
+            return { ...state, active: action.payload, phonesListState: action.payload}
 
         case CHANGE_SELECTED_PHONE:
             return { ...state, selectedPhone: action.payload}

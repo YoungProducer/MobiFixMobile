@@ -10,16 +10,16 @@ import {
 } from './DropDownMenu.styled'
 
 const phoneList = [
-    {name: 'iPhone5S' , id: 1},
-    {name: 'iPhoneSE' , id: 2},
-    {name: 'iPhone6'  , id: 3},
-    {name: 'iPhone6+' , id: 4},
-    {name: 'iPhone6S' , id: 5},
-    {name: 'iPhone6S+', id: 6},
-    {name: 'iPhone7'  , id: 7},
-    {name: 'iPhone7+' , id: 8},
-    {name: 'iPhone8'  , id: 9},
-    {name: 'iPhone8+' , id: 10},
+    {name: 'iPhone 5S' },
+    {name: 'iPhone SE' },
+    {name: 'iPhone 6'  },
+    {name: 'iPhone 6+' },
+    {name: 'iPhone 6S' },
+    {name: 'iPhone 6S+'},
+    {name: 'iPhone 7'  },
+    {name: 'iPhone 7+' },
+    {name: 'iPhone 8'  },
+    {name: 'iPhone 8+' },
 ]
 
 class DropDownMenu extends React.Component {
@@ -91,16 +91,17 @@ class DropDownMenu extends React.Component {
                     </StyledList>
 
                     <StyledList pose={burgerState && phonesListState ? 'listActive' : 'listInit'}>
-                        {this.state.phones.map(phone => {
+                        {this.state.phones.map((phone, index) => {
                             return (
                                 <StyledListItem
-                                    key={phone.id}
+                                    key={index}
                                     onClick={() => {
                                         onChangeSelectedPhone(phone.name)
+                                        onTogglePhonesListState(false)
                                     }}
                                 >
                                     <NavLink
-                                        to={"/services/" + phone.name}
+                                        to={"/services?phone=" + phone.name}
                                     >
                                         <StyledLink>
                                             {phone.name}

@@ -27,9 +27,8 @@ export const StyledInfoBlocksWrapper = styled.div`
 export const StyledInfoBlock = styled.div`
     width: 90%;
     border-radius: 15px;
-    padding-left: 5px;
-    padding-right: 5px;
-    box-shadow: 0px 2px 10px 0px #878787
+    padding: 5px;
+    box-shadow: 0px 2px 5px 0px #878787;
     display: flex;
     flex-direction: row;
     justify-content: center;

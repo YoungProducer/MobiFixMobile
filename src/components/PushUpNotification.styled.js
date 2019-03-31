@@ -25,7 +25,7 @@ export const StyledWrapper = styled(Wrapper)`
     left: 0;
     width: 100%;
     height: 50px;
-    background-color: #55b559;
+    background-color: rgba(85, 181, 89, 0.9);
     display: flex;
     justify-content: center;
     align-items: center;
