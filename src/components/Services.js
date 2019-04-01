@@ -7,18 +7,20 @@ import Header from './Header'
 import ServicesList from './ServicesList'
 import Footer from './Footer'
 
+import { StyledWrapper } from './Services.styled'
+
 class Services extends React.Component {
-    render() {
-        return(
-            <>
-                <PushUpNotification />
-                <DropDownMenu />
-                <Header />
-                <Burger />
-                <ServicesList />
-            </>
-        )
-    }
+  render() {
+    return (
+      <StyledWrapper>
+        <PushUpNotification />
+        <DropDownMenu />
+        <Header />
+        <Burger />
+        <ServicesList />
+      </StyledWrapper>
+    )
+  }
 }
 
 export default Services
