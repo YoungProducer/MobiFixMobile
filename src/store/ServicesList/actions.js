@@ -2,7 +2,9 @@ import {
   ADD_SERVICE,
   REMOVE_SERVICE,
   ADD_PRICE,
-  SUBTRACT_PRICE
+  SUBTRACT_PRICE,
+  NULLIFY_SERVICES,
+  NULLIFY_PRICE
 } from './constants'
 
 export const addService = (name, price) => ({
@@ -23,4 +25,12 @@ export const addPrice = price => ({
 export const subtractPrice = price => ({
   type: SUBTRACT_PRICE,
   payload: price
+})
+
+export const nullifyServices = () => ({
+  type: NULLIFY_SERVICES
+})
+
+export const nullifyPrice = () => ({
+  type: NULLIFY_PRICE
 })

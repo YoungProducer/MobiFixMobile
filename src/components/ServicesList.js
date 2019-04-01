@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 
-import Switcher from './Switcher'
+import Switcher from '../containers/Switcher'
 
 import {
   StyledWrapper,
@@ -23,7 +23,8 @@ class ServicesList extends React.Component {
       selectedPhone: '',
       hash: window.location.search,
       previousSearch: window.location.search,
-      pricelist: []
+      pricelist: [],
+      updateSw: false
     }
 
     this.getServices = this.getServices.bind(this)
@@ -88,6 +89,7 @@ class ServicesList extends React.Component {
   componentWillUpdate() {
     if (window.location.search !== this.state.previousSearch) {
       this.setState({ selectedPhone: this.getPhoneName('phone') })
+      // this.setState({updateSw: true})
     }
   }
 
@@ -97,6 +99,7 @@ class ServicesList extends React.Component {
         this.getServices()
       }, 200)
       this.state.previousSearch = window.location.search
+      // this.setState({updateSw: false})
     }
   }
 
@@ -112,13 +115,13 @@ class ServicesList extends React.Component {
             <tbody>
               {this.state.pricelist.map((service, index) => {
                 return (
-                  <StyledTableRow>
+                  <StyledTableRow key={index}>
                     <StyledTableData>{service[0]}</StyledTableData>
                     <StyledTableData width={'40px'}>
                       {service[1]}
                     </StyledTableData>
                     <StyledTableData width={'60px'}>
-                      <Switcher swid={index} />
+                      <Switcher setPassive={this.state.updateSw} swid={index} sname={service[0]} sprice={service[1]}/>
                     </StyledTableData>
                   </StyledTableRow>
                 )

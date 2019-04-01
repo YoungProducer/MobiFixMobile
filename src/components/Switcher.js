@@ -19,19 +19,32 @@ class Switcher extends React.Component {
   }
 
   onMouseClickHandle = (sname, sprice) => {
+    const { 
+      onAddService, 
+      onRemoveService, 
+      onAddPrice, 
+      onSubtractPrice
+    } = this.props
+
     this.setState({ active: !this.state.active })
 
     if (this.state.active !== true) {
-        this.props.onAddService(sname, sprice)
-        this.props.onAddPrice(sprice)
+        onAddService(sname, sprice)
+        onAddPrice(sprice)
     } else {
-        this.props.onRemoveService(sname)
-        this.props.onSubtractPrice(sprice)
+        onRemoveService(sname)
+        onSubtractPrice(sprice)
     }
   }
 
+  componentWillReceiveProps() {
+    this.setState({active: false})
+
+    console.log('update props')
+  }
+
   render() {
-    const { swid } = this.props
+    const { swid, sname, sprice } = this.props
 
     return (
       <>
@@ -41,7 +54,7 @@ class Switcher extends React.Component {
           id={'lblcheck' + swid}
           htmlFor={'check' + swid}
           onClick={() =>
-            this.onMouseClickHandle(this.props.sname, this.props.sprice)
+            this.onMouseClickHandle(sname, sprice)
           }
         >
           <StyledSwitcherBtn pose={this.state.active ? 'active' : 'inactive'} />

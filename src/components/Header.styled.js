@@ -9,6 +9,15 @@ export const StyledBlock = styled.div`
     right: 0;
     z-index: 1;
 `
+
+export const StyledLogoWrapper = styled.div`
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`
+
 export const StyledLogo = styled.h1`
     color: #fff;
     font-size: 200%;

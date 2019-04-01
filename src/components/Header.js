@@ -1,10 +1,9 @@
 import React from 'react'
-import styled from 'styled-components'
-
-import Burger from '../containers/Burger'
+import { NavLink } from 'react-router-dom'
 
 import {
     StyledBlock,
+    StyledLogoWrapper,
     StyledLogo
 } from './Header.styled'
 
@@ -12,9 +11,15 @@ class Header extends React.Component {
     render() {
         return(
             <StyledBlock>
-                <StyledLogo>
-                    MobiFix
-                </StyledLogo>
+                <StyledLogoWrapper>
+                    <NavLink
+                        to="/"
+                    >
+                        <StyledLogo>
+                            MobiFix
+                        </StyledLogo>
+                    </NavLink>
+                </StyledLogoWrapper>
             </StyledBlock>
         )
     }

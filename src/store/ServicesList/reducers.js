@@ -2,7 +2,9 @@ import {
   ADD_SERVICE,
   REMOVE_SERVICE,
   ADD_PRICE,
-  SUBTRACT_PRICE
+  SUBTRACT_PRICE,
+  NULLIFY_SERVICES,
+  NULLIFY_PRICE
 } from './constants'
 
 const svInitialState = {
@@ -21,6 +23,9 @@ export const servicesListReducer = (state = svInitialState, action) => {
       if (index > -1) state.services.splice(index, 1)
 
       return state
+
+    case NULLIFY_SERVICES: 
+      return svInitialState
       
     default:
       return state
@@ -38,6 +43,9 @@ export const totalPriceReducer = (state = tpInitialState, action) => {
       
     case SUBTRACT_PRICE:
       return { totalPrice: parseInt(state.totalPrice, 10) - parseInt(action.payload, 10) }
+
+    case NULLIFY_PRICE: 
+      return tpInitialState
 
     default:
       return state

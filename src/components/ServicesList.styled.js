@@ -6,7 +6,6 @@ export const StyledWrapper = styled.div`
   top: 38px;
   height: 100%;
   width: 100%;
-  background-color: #;
 `
 
 export const StyledPhoneNameWrapper = styled.div`
@@ -32,6 +31,7 @@ export const StyledTableWrapper = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
+  padding-bottom: 20px;
 `
 
 export const StyledTable = styled.table`

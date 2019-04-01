@@ -19,6 +19,7 @@ import {
 } from './Home.styled'
 
 const FullPageOptions = {
+    licenseKey: '1EB53BF6-00984973-A88B8092-A6220857',
     scrollOverflow: true
 }
 

@@ -33,7 +33,14 @@ class DropDownMenu extends React.Component {
     }
 
     render() {
-        const { burgerState, phonesListState, onTogglePhonesListState, onChangeSelectedPhone } = this.props
+        const { 
+            burgerState, 
+            phonesListState, 
+            onTogglePhonesListState, 
+            onChangeSelectedPhone, 
+            onNullifyServices, 
+            onNullifyPrice 
+        } = this.props
 
         return(
             <>
@@ -96,7 +103,8 @@ class DropDownMenu extends React.Component {
                                 <StyledListItem
                                     key={index}
                                     onClick={() => {
-                                        onChangeSelectedPhone(phone.name)
+                                        onNullifyServices()
+                                        onNullifyPrice()
                                         onTogglePhonesListState(false)
                                     }}
                                 >
@@ -120,6 +128,8 @@ class DropDownMenu extends React.Component {
 DropDownMenu.propTypes = {
     onChangeSelectedPhone: PropTypes.func.isRequired,
     onTogglePhonesListState: PropTypes.func.isRequired,
+    onNullifyServices: PropTypes.func.isRequired,
+    onNullifyPrice: PropTypes.func.isRequired,
     burgerState: PropTypes.bool.isRequired,
     phonesListState: PropTypes.bool.isRequired
 }

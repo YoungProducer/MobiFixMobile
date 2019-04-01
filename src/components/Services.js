@@ -5,6 +5,7 @@ import Burger from '../containers/Burger'
 import DropDownMenu from '../containers/DropDownMenu'
 import Header from './Header'
 import ServicesList from './ServicesList'
+import StatementSender from '../containers/StatementSender';
 import Footer from './Footer'
 
 import { StyledWrapper } from './Services.styled'
@@ -18,6 +19,7 @@ class Services extends React.Component {
         <Header />
         <Burger />
         <ServicesList />
+        <StatementSender />
       </StyledWrapper>
     )
   }
