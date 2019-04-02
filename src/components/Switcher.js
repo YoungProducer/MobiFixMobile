@@ -19,28 +19,29 @@ class Switcher extends React.Component {
   }
 
   onMouseClickHandle = (sname, sprice) => {
-    const { 
-      onAddService, 
-      onRemoveService, 
-      onAddPrice, 
+    const {
+      onAddService,
+      onRemoveService,
+      onAddPrice,
       onSubtractPrice
     } = this.props
 
     this.setState({ active: !this.state.active })
 
     if (this.state.active !== true) {
-        onAddService(sname, sprice)
-        onAddPrice(sprice)
+      onAddService(sname, sprice)
+      onAddPrice(sprice)
     } else {
-        onRemoveService(sname)
-        onSubtractPrice(sprice)
+      onRemoveService(sname)
+      onSubtractPrice(sprice)
     }
   }
 
   componentWillReceiveProps() {
-    this.setState({active: false})
-
-    console.log('update props')
+    const { switchers } = this.props
+    if (switchers === false) {
+      this.setState({ active: false })
+    }
   }
 
   render() {
@@ -53,9 +54,7 @@ class Switcher extends React.Component {
           pose={this.state.active ? 'active' : 'inactive'}
           id={'lblcheck' + swid}
           htmlFor={'check' + swid}
-          onClick={() =>
-            this.onMouseClickHandle(sname, sprice)
-          }
+          onClick={() => this.onMouseClickHandle(sname, sprice)}
         >
           <StyledSwitcherBtn pose={this.state.active ? 'active' : 'inactive'} />
         </StyledSwitcherBg>
@@ -65,6 +64,7 @@ class Switcher extends React.Component {
 }
 
 Switcher.propTypes = {
+  switchers: PropTypes.bool.isRequired,
   onAddService: PropTypes.func.isRequired,
   onRemoveService: PropTypes.func.isRequired,
   onAddPrice: PropTypes.func.isRequired,

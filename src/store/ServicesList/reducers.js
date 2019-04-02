@@ -4,7 +4,8 @@ import {
   ADD_PRICE,
   SUBTRACT_PRICE,
   NULLIFY_SERVICES,
-  NULLIFY_PRICE
+  NULLIFY_PRICE,
+  TOGGLE_SWITCHERS
 } from './constants'
 
 const svInitialState = {
@@ -14,7 +15,12 @@ const svInitialState = {
 export const servicesListReducer = (state = svInitialState, action) => {
   switch (action.type) {
     case ADD_SERVICE:
-      return { services: [...state.services, [action.payload.name, action.payload.price]] }
+      return {
+        services: [
+          ...state.services,
+          [action.payload.name, action.payload.price]
+        ]
+      }
 
     case REMOVE_SERVICE:
       let index = state.services.findIndex(service => {
@@ -24,9 +30,9 @@ export const servicesListReducer = (state = svInitialState, action) => {
 
       return state
 
-    case NULLIFY_SERVICES: 
+    case NULLIFY_SERVICES:
       return svInitialState
-      
+
     default:
       return state
   }
@@ -39,13 +45,33 @@ const tpInitialState = {
 export const totalPriceReducer = (state = tpInitialState, action) => {
   switch (action.type) {
     case ADD_PRICE:
-      return { totalPrice: parseInt(action.payload, 10) + parseInt(state.totalPrice, 10)}
-      
-    case SUBTRACT_PRICE:
-      return { totalPrice: parseInt(state.totalPrice, 10) - parseInt(action.payload, 10) }
+      return {
+        totalPrice:
+          parseInt(action.payload, 10) + parseInt(state.totalPrice, 10)
+      }
 
-    case NULLIFY_PRICE: 
+    case SUBTRACT_PRICE:
+      return {
+        totalPrice:
+          parseInt(state.totalPrice, 10) - parseInt(action.payload, 10)
+      }
+
+    case NULLIFY_PRICE:
       return tpInitialState
+
+    default:
+      return state
+  }
+}
+
+const swInitialState = {
+  switcherState: true
+}
+
+export const switcherStateReducer = (state = swInitialState, action) => {
+  switch (action.type) {
+    case TOGGLE_SWITCHERS:
+      return { switcherState: action.payload }
 
     default:
       return state
