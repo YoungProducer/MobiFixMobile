@@ -4,7 +4,8 @@ import {
   ADD_PRICE,
   SUBTRACT_PRICE,
   NULLIFY_SERVICES,
-  NULLIFY_PRICE
+  NULLIFY_PRICE,
+  TOGGLE_SWITCHERS
 } from './constants'
 
 export const addService = (name, price) => ({
@@ -33,4 +34,9 @@ export const nullifyServices = () => ({
 
 export const nullifyPrice = () => ({
   type: NULLIFY_PRICE
+})
+
+export const toggleSwitchers = switcherState => ({
+  type: TOGGLE_SWITCHERS,
+  payload: switcherState
 })

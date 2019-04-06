@@ -89,7 +89,6 @@ class ServicesList extends React.Component {
   componentWillUpdate() {
     if (window.location.search !== this.state.previousSearch) {
       this.setState({ selectedPhone: this.getPhoneName('phone') })
-      // this.setState({updateSw: true})
     }
   }
 
@@ -99,7 +98,6 @@ class ServicesList extends React.Component {
         this.getServices()
       }, 200)
       this.state.previousSearch = window.location.search
-      // this.setState({updateSw: false})
     }
   }
 
@@ -121,7 +119,12 @@ class ServicesList extends React.Component {
                       {service[1]}
                     </StyledTableData>
                     <StyledTableData width={'60px'}>
-                      <Switcher setPassive={this.state.updateSw} swid={index} sname={service[0]} sprice={service[1]}/>
+                      <Switcher
+                        setPassive={this.state.updateSw}
+                        swid={index}
+                        sname={service[0]}
+                        sprice={service[1]}
+                      />
                     </StyledTableData>
                   </StyledTableRow>
                 )

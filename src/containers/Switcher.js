@@ -10,6 +10,12 @@ import {
   subtractPrice
 } from '../store/ServicesList/actions'
 
+const putStateToProps = state => {
+  return {
+    switchers: state.switcherStateReducer.switcherState
+  }
+}
+
 const putDispatchToPros = dispatch => {
   return {
     onAddService: bindActionCreators(addService, dispatch),
@@ -20,6 +26,6 @@ const putDispatchToPros = dispatch => {
 }
 
 export default connect(
-  null,
+  putStateToProps,
   putDispatchToPros
 )(Switcher)
