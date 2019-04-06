@@ -1,6 +1,7 @@
 const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
 
 module.exports = {
   entry: [path.join(__dirname, 'node_modules/@babel/polyfill/lib/index.js') ,path.join(__dirname,'src','index.js')],
@@ -39,32 +40,25 @@ module.exports = {
         ],
       },
       {
-        test: /\.(png|woff|woff2|eot|ttf|svg)$/,
-        use: [
-          {
-            loader: 'url-loader?limit=100000',
-            options: {
-              name: 'fonts/[name].[ext]'
-            }
-          }
-        ],
+        test: /\.(png|woff|woff2|eot|ttf|svg)$/, 
+        loader: 'url-loader?limit=100000'
       },
       {
-        // test: /\.(gif|png|jpg)$/,
-        // loader: 'file-loader',
-        // options: {
-        //   name: './img/[name].[ext]',
-        //   outputPath: './img/'
-        // }
-        test: /\.(png|jpg|mp4|svg)$/,
-        use: [
-          {
-            loader: 'file-loader?limiti=100000',
-            options: {
-              name: 'img/[name].[ext]',
-            }
-          }
-        ]
+        test: /\.(gif|png|jpg|mp4|svg)$/,
+        loader: "file-loader?name=/img/[name].[ext]",
+        options: {
+          // name: './img/[name].[ext]',
+          outputPath: './img/'
+        }
+        // test: /\.(png|jpg|mp4|svg)$/,
+        // use: [
+        //   {
+        //     loader: 'file-loader?limit=100000',
+        //     options: {
+        //       name: 'img/[name].[ext]',
+        //     }
+        //   }
+        // ]
       }
     ]
   },
@@ -78,5 +72,12 @@ module.exports = {
       template: './src/index.html',
       filename: 'index.html',
     }),
+    new CopyPlugin([
+      {
+        from: './src/img',
+        to: './img/[name].[ext]',
+        toType: 'template',
+      },
+    ]),
   ]
 }

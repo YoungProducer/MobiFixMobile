@@ -29,7 +29,7 @@ class Footer extends React.Component {
 
                             <StyledListItem>
                                 <NavLink
-                                    to="/needtoknow"
+                                    to="/feeds"
                                 >
                                     <StyledLinkText>
                                         Необхдіно знати
@@ -100,7 +100,7 @@ class Footer extends React.Component {
 }
 
 Footer.propTypes = {
-    usefp: PropsTypes.bool.isRequired
+    usefp: PropsTypes.bool
 }
 
 export default Footer

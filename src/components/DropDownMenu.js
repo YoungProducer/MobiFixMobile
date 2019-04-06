@@ -56,7 +56,11 @@ class DropDownMenu extends React.Component {
                             </StyledLink>
                         </StyledListItem>
 
-                        <StyledListItem>
+                        <StyledListItem
+                            onClick={() => {
+                                onTogglePhonesListState(false)
+                            }}
+                        >
                             <NavLink
                                 to="/accessories"
                             >
@@ -66,9 +70,13 @@ class DropDownMenu extends React.Component {
                             </NavLink>
                         </StyledListItem>
 
-                        <StyledListItem>
+                        <StyledListItem
+                            onClick={() => {
+                                onTogglePhonesListState(false)
+                            }}
+                        >
                             <NavLink
-                                to="/needtoknow"
+                                to="/feeds"
                             >
                                 <StyledLink>
                                     Необхідно знати
@@ -76,7 +84,11 @@ class DropDownMenu extends React.Component {
                             </NavLink>
                         </StyledListItem>
 
-                        <StyledListItem>
+                        <StyledListItem
+                            onClick={() => {
+                                onTogglePhonesListState(false)
+                            }}
+                        >
                             <NavLink
                                 to="/contacts"
                             >
@@ -86,7 +98,11 @@ class DropDownMenu extends React.Component {
                             </NavLink>
                         </StyledListItem>
 
-                        <StyledListItem>
+                        <StyledListItem
+                            onClick={() => {
+                                onTogglePhonesListState(false)
+                            }}
+                        >
                             <NavLink
                                 to="/about"
                             >
