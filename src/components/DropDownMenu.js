@@ -57,7 +57,6 @@ class DropDownMenu extends React.Component {
               <StyledLink>Ремонт</StyledLink>
             </StyledListItem>
 
-<<<<<<< HEAD
                         <StyledListItem
                             onClick={() => {
                                 onTogglePhonesListState(false)
@@ -114,32 +113,6 @@ class DropDownMenu extends React.Component {
                             </NavLink>
                         </StyledListItem>
                     </StyledList>
-=======
-            <StyledListItem>
-              <NavLink to='/accessories'>
-                <StyledLink>Аксесуари</StyledLink>
-              </NavLink>
-            </StyledListItem>
-
-            <StyledListItem>
-              <NavLink to='/needtoknow'>
-                <StyledLink>Необхідно знати</StyledLink>
-              </NavLink>
-            </StyledListItem>
-
-            <StyledListItem>
-              <NavLink to='/contacts'>
-                <StyledLink>Контакти</StyledLink>
-              </NavLink>
-            </StyledListItem>
-
-            <StyledListItem>
-              <NavLink to='/about'>
-                <StyledLink>Чому ми</StyledLink>
-              </NavLink>
-            </StyledListItem>
-          </StyledList>
->>>>>>> 52f45d4855ba641daa0d92e7511069030b537ec9
 
           <StyledList
             pose={burgerState && phonesListState ? 'listActive' : 'listInit'}
