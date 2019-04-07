@@ -9,6 +9,7 @@ export const StyledContentWrapper = styled.div`
     padding-left: 10px;
     padding-right: 10px;
     padding-top: 30px;
+    padding-bottom: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -19,5 +20,7 @@ export const StyledContentWrapper = styled.div`
 `
 
 export const StyledShowMore = styled.p`
-    
+    color: #000;
+    text-align: center;
+    margin-top: 20px;
 `

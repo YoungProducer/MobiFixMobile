@@ -8,7 +8,9 @@ import {
     StyledClose,
     StyledHeader,
     StyledImage,
-    StyledText
+    StyledText,
+    StyledDate,
+    StyledEclipse
 } from './FeedModal.styled'
 
 class FeedModal extends React.Component {
@@ -30,6 +32,7 @@ class FeedModal extends React.Component {
             <StyledWrapper
                 pose={fmVisible ? 'visible' : 'init'}
             >
+                <StyledEclipse />
                 <StyledContentWrapper>
                     <Scrollbars
                         autoHide
@@ -44,6 +47,7 @@ class FeedModal extends React.Component {
                             <StyledHeader>{feedHeader}</StyledHeader>
                             <StyledImage src={feedImage} />
                             <StyledText>{feedText}</StyledText>
+                            <StyledDate>{feedDate}</StyledDate>
                         </StyledContent>
                     </Scrollbars>
                 </StyledContentWrapper>

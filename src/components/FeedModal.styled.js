@@ -1,6 +1,28 @@
 import posed from 'react-pose'
 import styled from 'styled-components'
 
+export const Eclipse = posed.div({
+    init: {
+        opacity: 0,
+        applyAtEnd: { display: 'none' }
+    },
+    visible: {
+        opacity: 0.5,
+        applyAtStart: { display: 'block' }
+    }
+})
+
+export const StyledEclipse = styled(Eclipse)`
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: #000;
+`
+
 export const Wrapper = posed.div({
     init: {
         applyAtEnd: { display: 'none' },
@@ -85,8 +107,11 @@ export const StyledClose = styled.div`
 
 export const StyledHeader = styled.h1`
     color: #000;
-    font-weight: 200;
+    font-weight: 600;
     margin-bottom: 30px;
+    max-width: 80%;
+    font-size: 120%;
+    text-align: center;
 `
 
 export const StyledImage = styled.img`
@@ -99,11 +124,18 @@ export const StyledImage = styled.img`
 export const StyledText = styled.p`
     color: #000;
     margin-top: 30px;
+    max-width: 80%;
     font-size: 120%;
     line-height: 36px;
     font-weight: 300;
     padding-right: 10px;
     padding-left: 10px;
+    text-align: justify;
+`
+
+export const StyledDate = styled.p`
+    color: #000;
+    margin-top: 30px;
 `
 
 

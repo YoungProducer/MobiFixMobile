@@ -21,7 +21,7 @@ export const ListWrapper = posed.div({
 
 export const StyledListWrapper = styled(ListWrapper)`
     position: fixed;
-    background-color: #333;
+    background-color: rgba(51, 51, 51, 0.8);
     width: 100%;
     height: 100%;
     z-index: 2;

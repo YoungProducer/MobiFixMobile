@@ -9,7 +9,8 @@ import Footer from './Footer'
 
 import {
     StyledWrapper,
-    StyledContentWrapper
+    StyledContentWrapper,
+    StyledShowMore
 } from './Feeds.styled'
 
 const blocks = [
@@ -118,6 +119,42 @@ class Feeds extends React.Component {
         this.state = {
             blocksData: blocks
         }
+
+        this.getBlocksData = this.getBlocksData.bind(this)
+    }
+
+    getBlocksData() {
+      this.setState({pages: this.state.pages + 1})
+      const sendRequest = async () => {
+        try {
+          return await axios.get('http://www.mobifix.tech/accessories.php', {
+            pages: this.state.pages
+          })
+        } catch(error) {
+          console.log(error)
+        }
+      }
+  
+      const getData = () => {
+        const res = sendRequest()
+        .then(response => {
+          console.log(response)
+          this.setState({blocks: response.data})
+        })
+        .catch(error => {
+          console.log(error)
+        })
+      }
+    }
+  
+    componentDidMount() {
+      // need to finish back-end
+      // this.getBlocksData()
+    }
+  
+    showMoreOnClick() {
+      // need to finish back-end
+      // this.getBlocksData()
     }
 
     render() {
@@ -139,6 +176,7 @@ class Feeds extends React.Component {
                                     />
                                 ))
                         })}
+                      <StyledShowMore>Показати більше</StyledShowMore>
                     </StyledContentWrapper>
                     <FeedModal />
                 </StyledWrapper>

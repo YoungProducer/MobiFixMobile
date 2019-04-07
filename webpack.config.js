@@ -40,8 +40,11 @@ module.exports = {
         ],
       },
       {
-        test: /\.(png|woff|woff2|eot|ttf|svg)$/, 
-        loader: 'url-loader?limit=100000'
+        test: /\.(png|woff|woff2|eot|ttf)$/, 
+        loader: 'url-loader?limit=100000',
+        options: {
+          outputPath: './fonts/'
+        }
       },
       {
         test: /\.(gif|png|jpg|mp4|svg)$/,

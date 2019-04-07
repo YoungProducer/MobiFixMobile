@@ -21,12 +21,14 @@ const FeedCard = props => {
 
     return(
         <StyledCardWrapper
-            onClick={() => onOpenFeedsModalWindow(
+            onClick={() => {
+                onOpenFeedsModalWindow(
                 header,
                 src,
                 text,
                 date
-            )}
+                )
+            }}
         >
             <StyledEclipse />
             <StyledImage src={src}/>

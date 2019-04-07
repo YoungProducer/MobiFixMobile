@@ -16,6 +16,7 @@ export const StyledImage = styled.div`
     height: 100%;
     background-image: url(${props => props.src});
     background-size: cover;
+    background-position: center;
 `
 
 export const StyledDescWrapper = styled.div`
