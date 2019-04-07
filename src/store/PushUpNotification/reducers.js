@@ -1,7 +1,12 @@
-import { TOGGLE_PUSH_UP_NOTIFICATION_STATE } from './constants';
+import { 
+    TOGGLE_PUSH_UP_NOTIFICATION_STATE,
+    SHOW_PUSH_UP_NOTIFICATION,
+    HIDE_PUSH_UP_NOTIFICATION 
+} from './constants';
 
 const initialState = {
-    pushUpNotificationVisible: false
+    pushUpNotificationVisible: false,
+    message: ''
 }
 
 const pushUpNotificationReducer = (state = initialState, action) => {
@@ -10,6 +15,20 @@ const pushUpNotificationReducer = (state = initialState, action) => {
             return { 
                 ...state, 
                 pushUpNotificationVisible: action.payload
+            }
+
+        case SHOW_PUSH_UP_NOTIFICATION: 
+            return {
+                ...state,
+                pushUpNotificationVisible: true,
+                message: action.payload || 'Надіслано'
+            }
+
+        case HIDE_PUSH_UP_NOTIFICATION: 
+            return {
+                ...state,
+                pushUpNotificationVisible: false,
+                message: ''
             }
 
         default: 

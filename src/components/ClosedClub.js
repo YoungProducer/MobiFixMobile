@@ -1,4 +1,5 @@
 import React from 'react'
+import axios from 'axios'
 import PropsTypes from 'prop-types'
 
 import { 
@@ -95,7 +96,20 @@ class ClosedClub extends React.Component {
     }
 
     _buttonOnClick() {
-        const { onTogglePushNotificationState } = this.props
+        const { onShowPushUpNotification, onHidePushUpNotification } = this.props
+
+        const sendRequest = async () => {
+            try {
+                console.log(this.state.nameInputValue, this.state.numberInputValue)
+
+              return await axios.post(
+                'http://www.mobifix.tech/closedclub.php?name=' + this.state.nameInputValue + 
+                '&phone=' + this.state.numberInputValue
+              )
+            } catch (error) {
+              console.log(error)
+            }
+          }
 
         if (this.state.nameInputActive && this.state.numberInputActive) {
             this.setState({
@@ -113,11 +127,18 @@ class ClosedClub extends React.Component {
                 })
             }, 400)
     
-            onTogglePushNotificationState(true)
+            const res = sendRequest()
+            .then(response => {
+                console.log(response)
+                onShowPushUpNotification()
 
-            window.setTimeout(() => {
-                onTogglePushNotificationState(false)
-            }, 2000)
+                window.setTimeout(() => {
+                    onHidePushUpNotification()
+                }, 2000)
+            })
+            .catch(error => {
+                console.log(error)
+            })
 
             this.setState({ nameInputValue: "", numberInputValue: "" });
             this.nameInput.value = "";
@@ -176,7 +197,9 @@ class ClosedClub extends React.Component {
 }
 
 ClosedClub.propTypes = {
-    onTogglePushNotificationState: PropsTypes.func.isRequired
+    onTogglePushNotificationState: PropsTypes.func.isRequired,
+    onShowPushUpNotification: PropsTypes.func.isRequired,
+    onHidePushUpNotification: PropsTypes.func.isRequired,
 }
 
 export default ClosedClub

@@ -3,7 +3,11 @@ import { connect } from 'react-redux'
 
 import StatementSender from '../components/StatementSender'
 
-import { togglePushUpNotificationState } from '../store/PushUpNotification/actions'
+import { 
+  togglePushUpNotificationState, 
+  showPushUpNotification,
+  hidePushUpNotification
+} from '../store/PushUpNotification/actions'
 import {
   nullifyServices,
   nullifyPrice,
@@ -19,10 +23,8 @@ const putStateToProps = state => {
 
 const putDispatchToProps = dispatch => {
   return {
-    onTogglePushUpNotification: bindActionCreators(
-      togglePushUpNotificationState,
-      dispatch
-    ),
+    onShowPushUpNotification: bindActionCreators(showPushUpNotification, dispatch),
+    onHidePushUpNotification: bindActionCreators(hidePushUpNotification, dispatch),
     onNullifyServices: bindActionCreators(nullifyServices, dispatch),
     onNullifyPrice: bindActionCreators(nullifyPrice, dispatch),
     onToggleSwitchers: bindActionCreators(toggleSwitchers, dispatch)

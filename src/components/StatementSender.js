@@ -53,7 +53,8 @@ class StatementSender extends React.Component {
     const {
       services,
       price,
-      onTogglePushUpNotification,
+      onHidePushUpNotification,
+      onShowPushUpNotification,
       onNullifyServices,
       onNullifyPrice,
       onToggleSwitchers
@@ -81,9 +82,9 @@ class StatementSender extends React.Component {
     const getResponse = async () => {
       const srvResponse = sendData()
         .then(response => {
-          onTogglePushUpNotification(true)
+          onShowPushUpNotification()
           window.setTimeout(() => {
-            onTogglePushUpNotification(false)
+            onHidePushUpNotification()
           }, 2000)
         })
         .catch(error => {
@@ -149,7 +150,8 @@ class StatementSender extends React.Component {
 StatementSender.propTypes = {
   services: PropTypes.array.isRequired,
   price: PropTypes.number.isRequired,
-  onTogglePushUpNotification: PropTypes.func.isRequired,
+  onHidePushUpNotification: PropTypes.func.isRequired,
+  onShowPushUpNotification: PropTypes.func.isRequired,
   onNullifyServices: PropTypes.func.isRequired,
   onNullifyPrice: PropTypes.func.isRequired,
   onToggleSwitchers: PropTypes.func.isRequired
