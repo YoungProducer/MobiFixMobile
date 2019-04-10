@@ -1,0 +1,2 @@
+export const OPEN_CART_MODAL = 'OPEN_CART_MODAL'
+export const CLOSE_CART_MODAL = 'CLOSE_CART_MODAL'

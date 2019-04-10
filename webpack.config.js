@@ -4,10 +4,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
 
 module.exports = {
-  entry: [path.join(__dirname, 'node_modules/@babel/polyfill/lib/index.js') ,path.join(__dirname,'src','index.js')],
+  entry: [
+    path.join(__dirname, 'node_modules/@babel/polyfill/lib/index.js'),
+    path.join(__dirname, 'src', 'index.js')
+  ],
   output: {
-    path: path.join(__dirname,'build'),
-    filename: 'bundle.js',
+    path: path.join(__dirname, 'build'),
+    filename: 'bundle.js'
   },
   node: {
     fs: 'empty'
@@ -21,7 +24,7 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
+        loader: 'babel-loader'
       },
       {
         test: /\.sass$/,
@@ -29,18 +32,16 @@ module.exports = {
           'style-loader',
           MiniCssExtractPlugin.loader,
           'css-loader',
-          'sass-loader',
+          'sass-loader'
           //'postcss-loader',
-        ],
+        ]
       },
       {
         test: /\.css$/,
-        use: [
-          'css-loader'
-        ],
+        use: ['css-loader']
       },
       {
-        test: /\.(png|woff|woff2|eot|ttf)$/, 
+        test: /\.(png|woff|woff2|eot|ttf)$/,
         loader: 'url-loader?limit=100000',
         options: {
           outputPath: './fonts/'
@@ -48,7 +49,7 @@ module.exports = {
       },
       {
         test: /\.(gif|png|jpg|mp4|svg)$/,
-        loader: "file-loader?name=/img/[name].[ext]",
+        loader: 'file-loader?name=/img/[name].[ext]',
         options: {
           // name: './img/[name].[ext]',
           outputPath: './img/'
@@ -67,20 +68,20 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'style.css',
+      filename: 'style.css'
     }),
     new HtmlWebpackPlugin({
       inject: true,
       hash: false,
       template: './src/index.html',
-      filename: 'index.html',
+      filename: 'index.html'
     }),
     new CopyPlugin([
       {
         from: './src/img',
         to: './img/[name].[ext]',
-        toType: 'template',
-      },
-    ]),
+        toType: 'template'
+      }
+    ])
   ]
 }
