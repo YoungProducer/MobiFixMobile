@@ -16,11 +16,13 @@ export const Header = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+`
 
-  & p {
-    color: #333;
-    font-size: 0.9em;
-  }
+export const Text = styled.p`
+  width: ${props => (props.count ? '30%' : '70%')};
+  text-align: ${props => (props.count ? 'right' : 'left')};
+  color: #333;
+  font-size: 0.9em;
 `
 
 export const SubHeader = styled.div`

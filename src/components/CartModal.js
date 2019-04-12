@@ -11,16 +11,22 @@ import {
   Submit
 } from './CartModal.styled'
 import Item from '../containers/CartItem'
-import Confirmation from './Confirmation'
+import Confirmation from '../containers/Confirmation'
 class Modal extends Component {
   constructor() {
     super()
 
-    this.state = {}
+    this.state = {
+      confirmationIsVisible: false
+    }
   }
 
   componentDidMount() {
     this.props.closeCartModal()
+  }
+
+  _handleScroll = event => {
+    this.setState({ confirmationIsVisible: false })
   }
 
   _total = () => {
@@ -36,11 +42,12 @@ class Modal extends Component {
 
   render() {
     const { visible, cart, closeCartModal } = this.props
+    const { confirmationIsVisible } = this.state
 
     return (
       <Container pose={visible ? 'visible' : 'init'}>
         <Global active={visible} />
-        <Items>
+        <Items onScroll={this._handleScroll}>
           <Header>
             <p>{cart.length !== 0 ? 'Кошик' : ''}</p>
             <Close onClick={closeCartModal}>
@@ -64,10 +71,14 @@ class Modal extends Component {
           )}
           <Buttons>
             <Total>${this._total()}</Total>
-            <Submit>Замовити</Submit>
+            <Submit
+              onClick={() => this.setState({ confirmationIsVisible: true })}
+            >
+              Замовити
+            </Submit>
           </Buttons>
         </Items>
-        <Confirmation />
+        <Confirmation isVisible={confirmationIsVisible} />
       </Container>
     )
   }

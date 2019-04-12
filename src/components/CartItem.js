@@ -4,30 +4,16 @@ import {
   Header,
   SubHeader,
   Controls,
-  AmountControl
+  AmountControl,
+  Text
 } from './CartItem.styled'
 
 class Item extends PureComponent {
-  // constructor(props) {
-  //   super(props)
-  //   this.state = {
-  //     count: props.counter
-  //   }
-
-  //   this.counterChange = this.counterChange.bind(this)
-  // }
-
-  // componentDidUpdate() {
-  //   this.setState({ count: this.props.counter })
-  // }
-
   _changeCounter = e => {
     const { name } = e.target
     const { index, counter, onUpdateCart } = this.props
 
     let count = counter
-
-    console.log(name)
 
     switch (name) {
       case 'add':
@@ -57,11 +43,11 @@ class Item extends PureComponent {
     return (
       <Container>
         <Header>
-          <p>{title}</p>
-          <p>{counter} шт.</p>
+          <Text>{title}</Text>
+          <Text count>{counter} шт.</Text>
         </Header>
         <SubHeader>
-          <p>{phone}</p>
+          <p>{phone === null ? 'Універсальний' : phone}</p>
           <p>${price}</p>
         </SubHeader>
         <Controls color={color}>

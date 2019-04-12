@@ -4,7 +4,7 @@ import { lighten, darken } from 'polished'
 
 const maxWidth = '360px'
 
-export const ContainerPose = posed.div({
+const ContainerPose = posed.div({
   init: {
     opacity: 0,
     applyAtEnd: { display: 'none' }
@@ -59,7 +59,7 @@ export const Empty = styled.div`
 
 export const Items = styled.div`
   width: calc(100% - 2.5em);
-  padding: 0 1.25em calc(1.25em + 40px) 1.25em;
+  padding: 0 1.25em calc(1.5em + 40px) 1.25em;
   height: 100%;
   overflow: scroll;
 `
@@ -79,7 +79,7 @@ export const Buttons = styled.div`
   left: 0;
   background-image: linear-gradient(
     to top,
-    #f5f5f5 0%,
+    #fff 0%,
     rgba(255, 255, 255, 0) 100%
   );
   position: fixed;
@@ -90,17 +90,19 @@ export const Submit = styled.button`
   line-height: 40px;
   border-radius: 20px;
   border: none;
-  background: #eee;
+  background: ${darken(0.025, '#eee')};
   font-size: 0.9em;
   outline: none;
-  color: ${lighten(0.25, '#000')};
+  color: #333;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
 `
 
 export const Total = styled.div`
   padding: 0 1.25em;
   line-height: 40px;
   border-radius: 20px;
-  background: #eee;
-  color: ${lighten(0.25, '#000')};
+  background: ${darken(0.025, '#eee')};
+  color: #333;
   font-size: 0.9em;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
 `
