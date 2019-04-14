@@ -17,7 +17,7 @@ import './App.sass'
 class App extends React.Component {
   render() {
     return (
-      <BrowserRouter>
+      <Router>
         <Switch>
           {/* Change route on commit */}
           <Route path='/' component={Home} exact />
@@ -26,7 +26,7 @@ class App extends React.Component {
           <Route path='/about' component={About} />
           <Route path='/feeds' component={Feeds} />
         </Switch>
-      </BrowserRouter>
+      </Router>
     )
   }
 }
