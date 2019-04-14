@@ -1,7 +1,16 @@
 import posed from 'react-pose'
 import styled from 'styled-components'
 
-export const StyledCardWrapper = styled.div`
+export const CardWrapper = styled.div({
+  init: {
+    opacity: 1
+  },
+  hide: {
+    opacity: 0
+  }
+})
+
+export const StyledCardWrapper = styled(CardWrapper)`
     width: 100%;
     height: 460px;
     overflow: hidden;

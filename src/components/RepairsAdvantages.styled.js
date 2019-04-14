@@ -9,6 +9,8 @@ export const StyledWrapper = styled.div`
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    padding-top: 38px;
+    padding-bottom: 10px;
 `
 
 export const StyledText = styled.p`

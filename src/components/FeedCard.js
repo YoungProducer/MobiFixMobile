@@ -10,36 +10,53 @@ import {
     StyledDate
 } from './FeedCard.styled'
 
-const FeedCard = props => {
-    const { 
-        src,
-        header,
-        text,
-        date,
-        onOpenFeedsModalWindow
-    } = props
+class FeedCard extends React.Component {
+    constructor(props) {
+        super(props)
 
-    return(
-        <StyledCardWrapper
-            onClick={() => {
-                onOpenFeedsModalWindow(
-                header,
-                src,
-                text,
-                date
-                )
-            }}
-        >
-            <StyledEclipse />
-            <StyledImage src={src}/>
-            <StyledDescWrapper>
-                <StyledDate>{date}</StyledDate>
-                <StyledDescHeader>
-                    {header}
-                </StyledDescHeader>
-            </StyledDescWrapper>
-        </StyledCardWrapper>
-    )
+        this.state = {
+            hiden: true
+        }
+    }
+
+    componentDidMount() {
+        this.setState({
+            hiden: false
+        })
+    }
+
+    render() {
+        const { 
+            src,
+            header,
+            text,
+            date,
+            onOpenFeedsModalWindow
+        } = this.props
+    
+        return(
+            <StyledCardWrapper
+                pose={this.state.hiden ? 'hide' : 'init'}
+                onClick={() => {
+                    onOpenFeedsModalWindow(
+                    header,
+                    src,
+                    text,
+                    date
+                    )
+                }}
+            >
+                <StyledEclipse />
+                <StyledImage src={src}/>
+                <StyledDescWrapper>
+                    <StyledDate>{date}</StyledDate>
+                    <StyledDescHeader>
+                        {header}
+                    </StyledDescHeader>
+                </StyledDescWrapper>
+            </StyledCardWrapper>
+        )
+    }
 }
 
 FeedCard.propTypes = {

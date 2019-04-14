@@ -3,16 +3,16 @@ import styled from 'styled-components'
 
 export const Wrapper = posed.div({
     init: {
-        x: 20,
+        x: 17,
     },
     slided: {
-        x: window.innerWidth - 20 - 20,
+        x: window.innerWidth - 20 - 23,
     }
 })
 
 export const StyledWrapper = styled(Wrapper)`
     position: fixed;
-    top: 13px;
+    top: 10px;
     width: 20px;
     height: 12px;
     display: flex;
@@ -20,6 +20,7 @@ export const StyledWrapper = styled(Wrapper)`
     justify-content: space-between;
     align-items: center;
     z-index: 10;
+    padding: 3px;
 `
 
 export const Stick = posed.div({

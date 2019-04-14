@@ -24,19 +24,25 @@ class AccessoriesDescription extends React.Component {
                             <StyledTextWrapper>
                                 Вибирайте аксесуари на свій смак
                             </StyledTextWrapper>
-                            <ImageWrapper src={headphones} width={150}/>
+                            <ImageWrapper 
+                                src={headphones} 
+                                width={150}
+                            />
                         </StyledInfoBlock>
                         <StyledInfoBlock>
-                            <ImageWrapper src={phonecase} width={150}/>
+                            <ImageWrapper 
+                                src={phonecase} 
+                                width={150}
+                            />
                             <StyledTextWrapper>
                                 Починаючи від зарядних пристроїв і до чохлів
                             </StyledTextWrapper>
                         </StyledInfoBlock>
-                        <RedirectButton
-                            url="/accessories"
-                            text="Перейти"
-                        />
                     </StyledInfoBlocksWrapper>
+                    <RedirectButton
+                        url="/accessories"
+                        text="Перейти"
+                    />
                 </StyledWrapper>
             </>
         )

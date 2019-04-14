@@ -7,6 +7,8 @@ import rootReducer from './store/reducers'
 
 import App from './App'
 
+// screen.orientation.lock('portrait')
+
 function saveState(state) {
   try {
     const serializedStorate = JSON.stringify(state)

@@ -86,6 +86,7 @@ class Footer extends React.Component {
                             </StyledListItem>
 
                             <StyledListItem>
+                                <span>Інстаграм </span>
                                 <StyledLink href="instagram://user?username=mobifix_te">
                                     mobifix_te
                                 </StyledLink>
