@@ -1,38 +1,35 @@
-import React, { Component } from 'react'
-import { Container, Field, Submit } from './Confirmation.styled'
-import axios from 'axios'
+import React, { Component } from 'react';
+import { Container, Field, Submit } from './Confirmation.styled';
+import axios from 'axios';
 
 class Confirmation extends Component {
   constructor() {
-    super()
-
+    super();
     this.state = {
       name: '',
       phone: ''
-    }
+    };
   }
 
   _sendForm = () => {
-    const { name, phone } = this.state
-    const { cart, pushUpNotification } = this.props
-
-    console.log(name, phone, cart)
+    const { name, phone } = this.state;
+    const { cart, pushUpNotification } = this.props;
 
     axios.post('', {
       name,
       phone,
       cart
-    }) // Add then with push up after POST req.
-  }
+    }); // Add then with push up after POST req.
+  };
 
   _handleField = event => {
-    const { name, value } = event.target
+    const { name, value } = event.target;
 
-    this.setState({ [name]: value })
-  }
+    this.setState({ [name]: value });
+  };
 
   render() {
-    const { isVisible } = this.props
+    const { isVisible } = this.props;
 
     return (
       <Container
@@ -52,8 +49,8 @@ class Confirmation extends Component {
         </div>
         <Submit onClick={() => this._sendForm()}>Замовити</Submit>
       </Container>
-    )
+    );
   }
 }
 
-export default Confirmation
+export default Confirmation;

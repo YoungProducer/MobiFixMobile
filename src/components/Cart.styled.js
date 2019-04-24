@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const Button = styled.button`
   width: 5em;
@@ -13,4 +13,5 @@ export const Button = styled.button`
   position: fixed;
   right: 0.5em;
   bottom: 0.5em;
-`
+  outline: none;
+`;

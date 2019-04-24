@@ -1,22 +1,22 @@
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
-import Confirmation from '../components/Confirmation'
-import { togglePushUpNotificationState } from '../store/PushUpNotification/actions'
-import { onOpenCartModal } from '../store/CartModal/actions'
+import Confirmation from '../components/Confirmation';
+import {
+  showPushUpNotification,
+  hidePushUpNotification
+} from '../store/PushUpNotification/actions';
 
 const mapStateToProps = state => ({
   cart: state.cart
-})
+});
 
 const mapActionToProps = dispatch => ({
-  pushUpNotification: bindActionCreators(
-    togglePushUpNotificationState,
-    dispatch
-  )
-})
+  onShowUpNotification: bindActionCreators(showPushUpNotification, dispatch),
+  onHideUpNotification: bindActionCreators(hidePushUpNotification, dispatch)
+});
 
 export default connect(
   mapStateToProps,
   mapActionToProps
-)(Confirmation)
+)(Confirmation);

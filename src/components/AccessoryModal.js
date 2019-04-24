@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import {
   Global,
   Container,
@@ -13,56 +13,47 @@ import {
   ColorPickWrapper,
   ColorPicker,
   AddToCart
-} from './AccessoryModal.styled'
-import { color } from 'style-value-types'
+} from './AccessoryModal.styled';
 
 class Modal extends Component {
   constructor() {
-    super()
+    super();
 
     this.state = {
       currentImage: 0,
       currentColor: 0
-    }
+    };
   }
 
   componentDidMount() {
-    this.props.closeAccessoryModal()
+    this.props.closeAccessoryModal();
   }
 
   _changeImage = e => {
-    const { index } = e.target.dataset
+    const { index } = e.target.dataset;
 
-    this.setState({ currentImage: parseInt(index) })
-  }
+    this.setState({ currentImage: parseInt(index) });
+  };
 
   _changeColor = e => {
-    const { index } = e.target.dataset
+    const { index } = e.target.dataset;
 
-    this.setState({ currentColor: parseInt(index) })
-  }
+    this.setState({ currentColor: parseInt(index) });
+  };
 
   _closeModal = () => {
-    const { closeAccessoryModal } = this.props
-    this.setState({ currentImage: 0, currentColor: 0 })
-    closeAccessoryModal()
-  }
+    const { closeAccessoryModal } = this.props;
+    this.setState({ currentImage: 0, currentColor: 0 });
+    closeAccessoryModal();
+  };
 
   render() {
-    const {
-      visible,
-      title,
-      src,
-      phone,
-      images,
-      price,
-      haveColors,
-      colors,
-      closeAccessoryModal,
-      addProduct
-    } = this.props
+    const { visible, title, phone, images, price, addProduct } = this.props;
 
-    const { currentColor, currentImage } = this.state
+    const { currentColor, currentImage } = this.state;
+    const { color } = images[currentColor];
+
+    console.log(color);
 
     return (
       <Container pose={visible ? 'visible' : 'init'}>
@@ -74,18 +65,18 @@ class Modal extends Component {
           </Close>
         </Header>
         <About>
-          <p>{phone === null ? '––' : phone}</p>
+          <p>{phone === null ? 'Універсальний' : phone}</p>
           <p>${price}</p>
         </About>
         <ImageWrapper>
           <Image>
-            <img src={images[currentColor][currentImage]} height='90%' />
+            <img src={images[currentColor].urls[currentImage]} height='90%' />
           </Image>
           <ImagePickWrapper>
-            {images[currentColor].map((image, index) => (
+            {images[currentColor].urls.map((image, index) => (
               <ImagePicker
                 src={image}
-                height='100%'
+                height='90%'
                 key={index}
                 data-index={index}
                 active={currentImage === index}
@@ -95,25 +86,22 @@ class Modal extends Component {
           </ImagePickWrapper>
         </ImageWrapper>
         <ColorPickWrapper>
-          {haveColors &&
-            colors.map(
-              (color, index) =>
-                color.length > 0 && (
-                  <ColorPicker
-                    key={index}
-                    color={color[1]}
-                    data-index={index}
-                    onClick={this._changeColor}
-                  />
-                )
-            )}
+          {images.map((item, index) => (
+            <ColorPicker
+              key={index}
+              color={item.color.hex}
+              data-index={index}
+              onClick={this._changeColor}
+            />
+          ))}
         </ColorPickWrapper>
         <AddToCart
           onClick={() =>
             addProduct(
               title,
               phone,
-              haveColors ? colors[currentColor][1] : '#aaa',
+              images[currentColor].color.hex,
+              images[currentColor].color.name,
               price
             )
           }
@@ -121,8 +109,8 @@ class Modal extends Component {
           у кошик
         </AddToCart>
       </Container>
-    )
+    );
   }
 }
 
-export default Modal
+export default Modal;

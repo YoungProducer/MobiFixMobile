@@ -1,8 +1,8 @@
-import styled, { createGlobalStyle } from 'styled-components'
-import posed from 'react-pose'
-import { lighten, darken } from 'polished'
+import styled, { createGlobalStyle } from 'styled-components';
+import posed from 'react-pose';
+import { lighten, darken } from 'polished';
 
-const maxWidth = '360px'
+const maxWidth = '360px';
 
 const ContainerPose = posed.div({
   init: {
@@ -13,14 +13,14 @@ const ContainerPose = posed.div({
     opacity: 1,
     applyAtStart: { display: 'flex' }
   }
-})
+});
 
 export const Global = createGlobalStyle`
   body {
     height: 100vh;
     ${props => (props.active ? 'overflow: hidden' : 'overflow-x: hidden')};
   }
-`
+`;
 
 export const Container = styled(ContainerPose)`
   width: 100%;
@@ -36,7 +36,7 @@ export const Container = styled(ContainerPose)`
   display: flex;
   align-items: center;
   z-index: 20;
-`
+`;
 
 export const Header = styled.div`
   width: 100%;
@@ -45,7 +45,7 @@ export const Header = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-`
+`;
 
 export const Empty = styled.div`
   width: 100%;
@@ -55,20 +55,23 @@ export const Empty = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`
+`;
 
 export const Items = styled.div`
   width: calc(100% - 2.5em);
   padding: 0 1.25em calc(1.5em + 40px) 1.25em;
   height: 100%;
   overflow: scroll;
-`
+`;
 
 export const Close = styled.button`
   padding-left: 2.5em;
   height: 100%;
   display: block;
-`
+  outline: none;
+  border: none;
+  background: transparent;
+`;
 
 export const Buttons = styled.div`
   width: calc(100% - 2.5em);
@@ -83,7 +86,7 @@ export const Buttons = styled.div`
     rgba(255, 255, 255, 0) 100%
   );
   position: fixed;
-`
+`;
 
 export const Submit = styled.button`
   padding: 0 1.25em;
@@ -95,7 +98,7 @@ export const Submit = styled.button`
   outline: none;
   color: #333;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-`
+`;
 
 export const Total = styled.div`
   padding: 0 1.25em;
@@ -105,4 +108,4 @@ export const Total = styled.div`
   color: #333;
   font-size: 0.9em;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-`
+`;

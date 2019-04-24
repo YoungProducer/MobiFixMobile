@@ -1,14 +1,17 @@
-import { OPEN_ACCESSORY_MODAL, CLOSE_ACCESSORY_MODAL } from './constants'
+import { OPEN_ACCESSORY_MODAL, CLOSE_ACCESSORY_MODAL } from './constants';
 
 const State = {
   visible: false,
   title: '',
-  images: [[]],
+  images: [
+    {
+      color: { id: 2, name: 'Зелений', hex: '#008000' },
+      urls: ['https://bobandsuewilliams.com/images/wall-7.jpg']
+    }
+  ],
   phone: '',
-  price: '',
-  colors: [[]],
-  haveColors: ''
-}
+  price: ''
+};
 
 export const accessoryModalReducer = (state = State, { type, payload }) => {
   switch (type) {
@@ -18,16 +21,14 @@ export const accessoryModalReducer = (state = State, { type, payload }) => {
         title: payload.title,
         images: payload.images,
         phone: payload.phone,
-        price: payload.price,
-        colors: payload.colors,
-        haveColors: payload.haveColors
-      }
+        price: payload.price
+      };
     case CLOSE_ACCESSORY_MODAL:
       return {
         ...state,
         visible: false
-      }
+      };
     default:
-      return state
+      return state;
   }
-}
+};

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import {
   Global,
   Container,
@@ -9,40 +9,40 @@ import {
   Buttons,
   Total,
   Submit
-} from './CartModal.styled'
-import Item from '../containers/CartItem'
-import Confirmation from '../containers/Confirmation'
+} from './CartModal.styled';
+import Item from '../containers/CartItem';
+import Confirmation from '../containers/Confirmation';
 class Modal extends Component {
   constructor() {
-    super()
+    super();
 
     this.state = {
       confirmationIsVisible: false
-    }
+    };
   }
 
   componentDidMount() {
-    this.props.closeCartModal()
+    this.props.closeCartModal();
   }
 
   _handleScroll = event => {
-    this.setState({ confirmationIsVisible: false })
-  }
+    this.setState({ confirmationIsVisible: false });
+  };
 
   _total = () => {
-    const { cart } = this.props
-    let total = 0
+    const { cart } = this.props;
+    let total = 0;
 
     cart.map(item => {
-      total += parseInt(item.price) * item.counter
-    })
+      total += parseInt(item.price) * item.counter;
+    });
 
-    return total
-  }
+    return total;
+  };
 
   render() {
-    const { visible, cart, closeCartModal } = this.props
-    const { confirmationIsVisible } = this.state
+    const { visible, cart, closeCartModal } = this.props;
+    const { confirmationIsVisible } = this.state;
 
     return (
       <Container pose={visible ? 'visible' : 'init'}>
@@ -57,31 +57,33 @@ class Modal extends Component {
           {cart.length === 0 ? (
             <Empty>Кошик пустий</Empty>
           ) : (
-            cart.map((item, id) => (
-              <Item
-                key={id}
-                title={item.name}
-                phone={item.phone}
-                color={item.color}
-                price={item.price}
-                counter={item.counter}
-                index={item.id}
-              />
-            ))
+            <>
+              {cart.map((item, id) => (
+                <Item
+                  key={id}
+                  title={item.name}
+                  phone={item.phone}
+                  color={item.color}
+                  price={item.price}
+                  counter={item.counter}
+                  index={item.id}
+                />
+              ))}
+              <Buttons>
+                <Total>${this._total()}</Total>
+                <Submit
+                  onClick={() => this.setState({ confirmationIsVisible: true })}
+                >
+                  Замовити
+                </Submit>
+              </Buttons>
+            </>
           )}
-          <Buttons>
-            <Total>${this._total()}</Total>
-            <Submit
-              onClick={() => this.setState({ confirmationIsVisible: true })}
-            >
-              Замовити
-            </Submit>
-          </Buttons>
         </Items>
         <Confirmation isVisible={confirmationIsVisible} />
       </Container>
-    )
+    );
   }
 }
 
-export default Modal
+export default Modal;

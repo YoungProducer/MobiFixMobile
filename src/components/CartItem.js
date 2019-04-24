@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react'
+import React, { PureComponent } from 'react';
 import {
   Container,
   Header,
@@ -6,26 +6,26 @@ import {
   Controls,
   AmountControl,
   Text
-} from './CartItem.styled'
+} from './CartItem.styled';
 
 class Item extends PureComponent {
   _changeCounter = e => {
-    const { name } = e.target
-    const { index, counter, onUpdateCart } = this.props
+    const { name } = e.target;
+    const { index, counter, onUpdateCart } = this.props;
 
-    let count = counter
+    let count = counter;
 
     switch (name) {
       case 'add':
-        count += 1
-        onUpdateCart(index, count)
+        count += 1;
+        onUpdateCart(index, count);
       case 'remove':
-        count -= 1
-        onUpdateCart(index, count)
+        count -= 1;
+        onUpdateCart(index, count);
       default:
-        break
+        break;
     }
-  }
+  };
 
   render() {
     const {
@@ -38,7 +38,9 @@ class Item extends PureComponent {
       total,
       onRemoveProduct,
       onUpdateCart
-    } = this.props
+    } = this.props;
+
+    console.log(color);
 
     return (
       <Container>
@@ -63,8 +65,8 @@ class Item extends PureComponent {
           <p onClick={() => onRemoveProduct(index)}>Видалити</p>
         </Controls>
       </Container>
-    )
+    );
   }
 }
 
-export default Item
+export default Item;
