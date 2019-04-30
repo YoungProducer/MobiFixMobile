@@ -48,12 +48,18 @@ class Modal extends Component {
   };
 
   render() {
-    const { visible, title, phone, images, price, addProduct } = this.props;
+    const {
+      visible,
+      title,
+      phone,
+      images,
+      price,
+      addProduct,
+      stock
+    } = this.props;
 
     const { currentColor, currentImage } = this.state;
     const { color } = images[currentColor];
-
-    console.log(color);
 
     return (
       <Container pose={visible ? 'visible' : 'init'}>
@@ -65,12 +71,12 @@ class Modal extends Component {
           </Close>
         </Header>
         <About>
-          <p>{phone === null ? 'Універсальний' : phone}</p>
+          <p>{phone === null ? 'Універсальний' : phone.name}</p>
           <p>${price}</p>
         </About>
         <ImageWrapper>
           <Image>
-            <img src={images[currentColor].urls[currentImage]} height='90%' />
+            <img src={images[currentColor].urls[currentImage]} />
           </Image>
           <ImagePickWrapper>
             {images[currentColor].urls.map((image, index) => (
@@ -95,19 +101,23 @@ class Modal extends Component {
             />
           ))}
         </ColorPickWrapper>
-        <AddToCart
-          onClick={() =>
-            addProduct(
-              title,
-              phone,
-              images[currentColor].color.hex,
-              images[currentColor].color.name,
-              price
-            )
-          }
-        >
-          у кошик
-        </AddToCart>
+        {stock == true ? (
+          <AddToCart
+            onClick={() =>
+              addProduct(
+                title,
+                phone.name,
+                images[currentColor].color.hex,
+                images[currentColor].color.name,
+                price
+              )
+            }
+          >
+            у кошик
+          </AddToCart>
+        ) : (
+          <AddToCart>Не в наявності</AddToCart>
+        )}
       </Container>
     );
   }

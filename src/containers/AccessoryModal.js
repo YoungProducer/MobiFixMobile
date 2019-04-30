@@ -1,11 +1,11 @@
-import { bindActionCreators } from 'redux'
-import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
-import AccessoryModal from '../components/AccessoryModal'
+import AccessoryModal from '../components/AccessoryModal';
 
-import { togglePushUpNotificationState } from '../store/PushUpNotification/actions'
-import { onCloseAccessoryModal } from '../store/AccessoryModal/actions'
-import { addToCart } from '../store/Cart/action'
+import { togglePushUpNotificationState } from '../store/PushUpNotification/actions';
+import { onCloseAccessoryModal } from '../store/AccessoryModal/actions';
+import { addToCart } from '../store/Cart/action';
 
 const putStateToProps = state => {
   return {
@@ -14,10 +14,9 @@ const putStateToProps = state => {
     title: state.accessoryModalReducer.title,
     phone: state.accessoryModalReducer.phone,
     price: state.accessoryModalReducer.price,
-    colors: state.accessoryModalReducer.colors,
-    haveColors: state.accessoryModalReducer.haveColors
-  }
-}
+    stock: state.accessoryModalReducer.stock
+  };
+};
 
 const putDispatchToProps = dispatch => {
   return {
@@ -27,10 +26,10 @@ const putDispatchToProps = dispatch => {
       togglePushUpNotificationState,
       dispatch
     )
-  }
-}
+  };
+};
 
 export default connect(
   putStateToProps,
   putDispatchToProps
-)(AccessoryModal)
+)(AccessoryModal);

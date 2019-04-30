@@ -21,7 +21,8 @@ export const accessoryModalReducer = (state = State, { type, payload }) => {
         title: payload.title,
         images: payload.images,
         phone: payload.phone,
-        price: payload.price
+        price: payload.price,
+        stock: payload.stock
       };
     case CLOSE_ACCESSORY_MODAL:
       return {

@@ -19,22 +19,29 @@ export default class Accessory extends React.Component {
   };
 
   render() {
-    const { images, title, phone, price, openAccessoryModal } = this.props;
+    const {
+      images,
+      title,
+      phone,
+      price,
+      openAccessoryModal,
+      stock
+    } = this.props;
     const { current } = this.state;
 
     return (
       <Container
         onClick={() => {
-          openAccessoryModal(title, phone, price, images);
+          openAccessoryModal(title, phone, price, images, stock);
         }}
       >
         <Image>
-          <img src={images[0].urls[current]} width='90%' />
+          <img src={images[0].urls[current]} />
         </Image>
         <Preview>
           <Title>{title}</Title>
           <PriceBox>
-            {phone !== null && <Phone>{phone}</Phone>}
+            {phone !== null && <Phone>{phone.name}</Phone>}
             <Price>${price}</Price>
           </PriceBox>
         </Preview>

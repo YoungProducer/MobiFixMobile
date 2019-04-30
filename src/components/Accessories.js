@@ -44,6 +44,7 @@ export default class Accessories extends Component {
               images={item.photos}
               phone={item.phone}
               price={item.price}
+              stock={item.is_available}
             />
           ))}
         </Container>

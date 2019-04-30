@@ -1,7 +1,7 @@
-import styled, { createGlobalStyle } from 'styled-components'
-import posed from 'react-pose'
+import styled, { createGlobalStyle } from 'styled-components';
+import posed from 'react-pose';
 
-const maxWidth = '360px'
+const maxWidth = '360px';
 
 export const ContainerPose = posed.div({
   init: {
@@ -12,14 +12,14 @@ export const ContainerPose = posed.div({
     opacity: 1,
     applyAtStart: { display: 'flex' }
   }
-})
+});
 
 export const Global = createGlobalStyle`
   body {
     height: 100vh;
     ${props => (props.active ? 'overflow: hidden' : 'overflow-x: hidden')};
   }
-`
+`;
 
 export const Container = styled(ContainerPose)`
   width: 100%;
@@ -33,7 +33,7 @@ export const Container = styled(ContainerPose)`
   overflow-y: hidden;
   flex-direction: column;
   z-index: 20;
-`
+`;
 
 export const Header = styled.div`
   width: calc(100% - 1.25em);
@@ -43,7 +43,7 @@ export const Header = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-`
+`;
 
 export const About = styled.div`
   width: calc(100% - 2.5em);
@@ -61,7 +61,7 @@ export const About = styled.div`
     font-size: 0.9em;
     height: 2.5em;
   }
-`
+`;
 
 export const Title = styled.p`
   font-size: 1.15em;
@@ -70,19 +70,20 @@ export const Title = styled.p`
   @media screen and (max-width: ${maxWidth}) {
     font-size: 0.9em;
   }
-`
+`;
 
 export const Close = styled.button`
   padding: 0 1.25em;
   height: 4em;
-
+  background: transparent;
+  border: 0;
   & img {
     @media screen and (max-width: ${maxWidth}) {
       width: 0.8em;
       height: 0.8em;
     }
   }
-`
+`;
 
 export const ColorPickWrapper = styled.div`
   width: calc(100vw - 2.5em);
@@ -92,7 +93,7 @@ export const ColorPickWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-`
+`;
 
 export const ColorPicker = styled.div`
   width: 100%;
@@ -101,7 +102,7 @@ export const ColorPicker = styled.div`
   height: 1em;
   background: ${props => props.color};
   opacity: 0.45;
-`
+`;
 
 export const ImageWrapper = styled.div`
   width: 100%;
@@ -114,15 +115,21 @@ export const ImageWrapper = styled.div`
   @media screen and (max-width: ${maxWidth}) {
     height: calc(100% - 10.5em);
   }
-`
+`;
 
 export const Image = styled.div`
   height: 80%;
-  width: 100%;
+  width: 80%;
   display: flex;
   justify-content: center;
   align-items: center;
-`
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+`;
 
 export const ImagePickWrapper = styled.div`
   width: calc(100% - 2.5em);
@@ -131,13 +138,13 @@ export const ImagePickWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`
+`;
 
 export const ImagePicker = styled.img`
   display: block;
   margin: 0 0.5em;
   border-bottom: 2px solid ${props => (props.active ? '#f2f2f2' : '#fff')};
-`
+`;
 
 export const AddToCart = styled.button`
   width: 100%;
@@ -152,4 +159,4 @@ export const AddToCart = styled.button`
   @media screen and (max-width: ${maxWidth}) {
     font-size: 0.9em;
   }
-`
+`;

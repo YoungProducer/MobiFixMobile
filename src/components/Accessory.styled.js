@@ -1,10 +1,11 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
-const maxWidth = '360px'
+const maxWidth = '360px';
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
 
   height: 120vw;
   width: 90vw;
@@ -25,19 +26,25 @@ export const Container = styled.div`
       margin-top: 3em;
     }
   }
-`
+`;
 
 export const Image = styled.div`
   filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.15));
-  height: 80%;
-  width: 100%;
+  height: 70%;
+  width: 80%;
   display: flex;
   justify-content: center;
   align-items: center;
-`
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+`;
 
 export const Preview = styled.div`
-  height: 20%;
+  height: 30%;
   width: calc(100% - 60px);
   padding: 0 30px;
   display: flex;
@@ -47,7 +54,7 @@ export const Preview = styled.div`
   text-align: center;
   position: absolute;
   bottom: 0;
-`
+`;
 
 export const Title = styled.p`
   font-size: 1.5em;
@@ -56,7 +63,7 @@ export const Title = styled.p`
   @media screen and (max-width: ${maxWidth}) {
     font-size: 1em;
   }
-`
+`;
 
 export const PriceBox = styled.div`
   width: 100%;
@@ -65,7 +72,7 @@ export const PriceBox = styled.div`
   align-items: center;
   justify-content: center;
   margin-top: 0.5em;
-`
+`;
 
 export const Phone = styled.p`
   font-size: 1em;
@@ -75,7 +82,7 @@ export const Phone = styled.p`
   @media screen and (max-width: ${maxWidth}) {
     font-size: 0.75em;
   }
-`
+`;
 
 export const Price = styled.p`
   font-size: 1em;
@@ -84,4 +91,4 @@ export const Price = styled.p`
   @media screen and (max-width: ${maxWidth}) {
     font-size: 0.75em;
   }
-`
+`;
