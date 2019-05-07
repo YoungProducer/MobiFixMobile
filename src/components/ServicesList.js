@@ -33,25 +33,37 @@ class ServicesList extends React.Component {
   getServices() {
     const sendRequest = async () => {
       try {
-        return await axios.get(
-          'http://www.mobifix.tech/servicesprice.php?name=' +
-            this.state.selectedPhone.slice(
-              this.state.selectedPhone.indexOf(' ') + 1
-            )
-        )
-      } catch (error) {
+        
+        
+        const url = 'http://api.mobifix.tech/prices?name=' + this.state.selectedPhone.slice(this.state.selectedPhone.indexOf(" ") + 1)
+
+        axios.interceptors.request.use(request => {
+          console.log('Starting Request', request)
+          return request
+        })
+        
+        axios.interceptors.response.use(response => {
+          console.log('Response:', response)
+          return response
+        })
+
+        return await axios.post('http://api.mobifix.tech/prices', {
+          name: this.state.selectedPhone.slice(this.state.selectedPhone.indexOf(" ") + 1)
+        })
+      } catch(error) {
         console.log(error)
       }
     }
 
     const getData = () => {
       const response = sendRequest()
-        .then(response => {
-          this.setState({ pricelist: response.data })
-        })
-        .catch(error => {
-          console.log(error)
-        })
+      .then((response) => {
+        this.setState({pricelist: response.data})
+        console.log(response)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
     }
 
     getData()

@@ -37,7 +37,7 @@ class About extends React.Component {
                         <StyledQuestionBlock>
                             <Question>Як взнати <Accent>ціни</Accent> на наші послуги?</Question>
                             <Answer>
-                                Натисніть <Accent>ремонт</Accent>ремонт та виберіть бажаний телефон. Після цього ви зможете побачити всі доступні послуги стосовно цього телефону та <Accent>ціни</Accent> на них.
+                                Натисніть <Accent>ремонт</Accent> та виберіть бажаний телефон. Після цього ви зможете побачити всі доступні послуги стосовно цього телефону та <Accent>ціни</Accent> на них.
                             </Answer>
                         </StyledQuestionBlock>
                         <StyledQuestionBlock>
