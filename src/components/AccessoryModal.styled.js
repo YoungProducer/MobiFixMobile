@@ -1,5 +1,6 @@
 import styled, { createGlobalStyle } from 'styled-components';
 import posed from 'react-pose';
+import { darken } from 'polished';
 
 const maxWidth = '360px';
 
@@ -99,8 +100,10 @@ export const ColorPicker = styled.div`
   width: 100%;
   margin: 0.25em;
   border-radius: 0.5em;
+  box-sizing: border-box;
   height: 1em;
   background: ${props => props.color};
+  border: 1px solid ${props => darken(0.15, props.color)};
   opacity: 0.45;
 `;
 

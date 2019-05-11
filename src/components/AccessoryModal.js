@@ -82,7 +82,7 @@ class Modal extends Component {
             {images[currentColor].urls.map((image, index) => (
               <ImagePicker
                 src={image}
-                height='90%'
+                height='75%'
                 key={index}
                 data-index={index}
                 active={currentImage === index}
