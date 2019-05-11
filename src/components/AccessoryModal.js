@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types'
 import {
   Global,
   Container,
@@ -54,7 +55,9 @@ class Modal extends Component {
       phone,
       images,
       price,
-      addProduct,
+      onAddProduct,
+      onShowPushUpNotification,
+      onHidePushUpNotification,
       stock
     } = this.props;
 
@@ -104,13 +107,19 @@ class Modal extends Component {
         {stock == true ? (
           <AddToCart
             onClick={() =>
-              addProduct(
-                title,
-                phone.name,
-                images[currentColor].color.hex,
-                images[currentColor].color.name,
-                price
-              )
+              {
+                onAddProduct(
+                  title,
+                  phone.name,
+                  images[currentColor].color.hex,
+                  images[currentColor].color.name,
+                  price
+                ),
+                onShowPushUpNotification(title + ' добавлено у кошик')
+                window.setTimeout(() => {
+                  onHidePushUpNotification()
+                }, 2000)
+              }
             }
           >
             у кошик
@@ -121,6 +130,11 @@ class Modal extends Component {
       </Container>
     );
   }
+}
+
+Modal.propTypes = {
+  onShowPushUpNotification: PropTypes.func.isRequired,
+  onHidePushUpNotification: PropTypes.func.isRequired,
 }
 
 export default Modal;

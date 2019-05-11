@@ -29,7 +29,7 @@ export const StyledWrapper = styled(Wrapper)`
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 20;
+    z-index: 100;
 `
 
 export const StyledText = styled.h2`

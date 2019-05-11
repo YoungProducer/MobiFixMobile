@@ -12,8 +12,8 @@ const mapStateToProps = state => ({
 });
 
 const mapActionToProps = dispatch => ({
-  onShowUpNotification: bindActionCreators(showPushUpNotification, dispatch),
-  onHideUpNotification: bindActionCreators(hidePushUpNotification, dispatch)
+  onShowPushUpNotification: bindActionCreators(showPushUpNotification, dispatch),
+  onHidePushUpNotification: bindActionCreators(hidePushUpNotification, dispatch)
 });
 
 export default connect(

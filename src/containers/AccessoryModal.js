@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import AccessoryModal from '../components/AccessoryModal';
 
-import { togglePushUpNotificationState } from '../store/PushUpNotification/actions';
+import { showPushUpNotification, hidePushUpNotification } from '../store/PushUpNotification/actions'
 import { onCloseAccessoryModal } from '../store/AccessoryModal/actions';
 import { addToCart } from '../store/Cart/action';
 
@@ -21,11 +21,9 @@ const putStateToProps = state => {
 const putDispatchToProps = dispatch => {
   return {
     closeAccessoryModal: bindActionCreators(onCloseAccessoryModal, dispatch),
-    addProduct: bindActionCreators(addToCart, dispatch),
-    pushUpNotification: bindActionCreators(
-      togglePushUpNotificationState,
-      dispatch
-    )
+    onAddProduct: bindActionCreators(addToCart, dispatch),
+    onShowPushUpNotification: bindActionCreators(showPushUpNotification, dispatch),
+    onHidePushUpNotification: bindActionCreators(hidePushUpNotification, dispatch)
   };
 };
 

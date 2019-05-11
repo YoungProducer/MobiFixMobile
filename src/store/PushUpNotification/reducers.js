@@ -28,7 +28,6 @@ const pushUpNotificationReducer = (state = initialState, action) => {
             return {
                 ...state,
                 pushUpNotificationVisible: false,
-                message: ''
             }
 
         default: 

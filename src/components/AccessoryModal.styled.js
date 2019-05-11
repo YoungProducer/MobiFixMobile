@@ -150,7 +150,7 @@ export const AddToCart = styled.button`
   width: 100%;
   height: 3em;
   border: none;
-  background: #fff;
+  background: #eee;
   color: #555;
   font-size: 1em;
   text-transform: uppercase;

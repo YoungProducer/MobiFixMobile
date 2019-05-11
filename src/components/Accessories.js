@@ -29,7 +29,7 @@ export default class Accessories extends Component {
 
   render() {
     const { data } = this.state;
-    console.log(data);
+    
     return (
       <>
         <PushUpNotification />

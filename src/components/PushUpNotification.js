@@ -11,13 +11,13 @@ import {
 
 class PushUpNotification extends React.Component {
     render() {
-        const { visible } = this.props
+        const { visible, message } = this.props
 
         return(
             <>
                 <StyledWrapper pose={visible ? 'visible' : 'init'}>
                     <StyledText>
-                        Надіслано
+                        {message}
                     </StyledText>
                     <StyledGalc data="../img/galc.svg" type="image/svg+xml"></StyledGalc>
                 </StyledWrapper>

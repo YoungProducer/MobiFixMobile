@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types'
 import { Container, Field, Submit } from './Confirmation.styled';
 import axios from 'axios';
 
@@ -13,13 +14,24 @@ class Confirmation extends Component {
 
   _sendForm = () => {
     const { name, phone } = this.state;
-    const { cart, pushUpNotification } = this.props;
+    const {
+      cart,
+      onShowPushUpNotification,
+      onHidePushUpNotification
+    } = this.props;
 
-    axios.post('', {
-      name,
-      phone,
-      cart
-    }); // Add then with push up after POST req.
+    axios
+      .post('http://www.mobifix.tech/accessorytelegram.php', {
+        name: name,
+        phone: phone,
+        cart: cart
+      })
+      .then(response => {
+        onShowPushUpNotification('Замовлення оформленно'); // Remove after axios will work
+        window.setTimeout(() => {
+          onHidePushUpNotification();
+        }, 2000);
+      })
   };
 
   _handleField = event => {
@@ -51,6 +63,11 @@ class Confirmation extends Component {
       </Container>
     );
   }
+}
+
+Confirmation.propTypes = {
+  onShowPushUpNotification: PropTypes.func.isRequired,
+  onHidePushUpNotification: PropTypes.func.isRequired,
 }
 
 export default Confirmation;

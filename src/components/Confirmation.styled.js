@@ -59,4 +59,5 @@ export const Submit = styled.button`
   border-radius: 10px;
   color: #fff;
   background: #0070c8;
+  outline: none;
 `

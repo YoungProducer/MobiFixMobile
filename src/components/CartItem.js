@@ -40,8 +40,6 @@ class Item extends PureComponent {
       onUpdateCart
     } = this.props;
 
-    console.log(color);
-
     return (
       <Container>
         <Header>
