@@ -143,10 +143,20 @@ export const ImagePickWrapper = styled.div`
   align-items: center;
 `;
 
-export const ImagePicker = styled.img`
+export const ImagePicker = styled.div`
   display: block;
+  height: 80%;
+  width: calc(100% / 10);
+  box-sizing: border-box;
+  padding: 0.5em 5px;
   margin: 0 0.5em;
   border-bottom: 2px solid ${props => (props.active ? '#f2f2f2' : '#fff')};
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
 `;
 
 export const AddToCart = styled.button`
