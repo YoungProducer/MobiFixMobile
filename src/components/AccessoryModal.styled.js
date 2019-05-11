@@ -1,5 +1,6 @@
 import styled, { createGlobalStyle } from 'styled-components';
 import posed from 'react-pose';
+import { darken } from 'polished';
 
 const maxWidth = '360px';
 
@@ -99,8 +100,10 @@ export const ColorPicker = styled.div`
   width: 100%;
   margin: 0.25em;
   border-radius: 0.5em;
+  box-sizing: border-box;
   height: 1em;
   background: ${props => props.color};
+  border: 1px solid ${props => darken(0.15, props.color)};
   opacity: 0.45;
 `;
 
@@ -140,10 +143,20 @@ export const ImagePickWrapper = styled.div`
   align-items: center;
 `;
 
-export const ImagePicker = styled.img`
+export const ImagePicker = styled.div`
   display: block;
+  height: 80%;
+  width: calc(100% / 10);
+  box-sizing: border-box;
+  padding: 0.5em 5px;
   margin: 0 0.5em;
   border-bottom: 2px solid ${props => (props.active ? '#f2f2f2' : '#fff')};
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
 `;
 
 export const AddToCart = styled.button`

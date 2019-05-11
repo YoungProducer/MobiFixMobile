@@ -32,13 +32,11 @@ class Modal extends Component {
 
   _changeImage = e => {
     const { index } = e.target.dataset;
-
     this.setState({ currentImage: parseInt(index) });
   };
 
   _changeColor = e => {
     const { index } = e.target.dataset;
-
     this.setState({ currentColor: parseInt(index) });
   };
 
@@ -62,7 +60,6 @@ class Modal extends Component {
     } = this.props;
 
     const { currentColor, currentImage } = this.state;
-    const { color } = images[currentColor];
 
     return (
       <Container pose={visible ? 'visible' : 'init'}>
@@ -84,13 +81,17 @@ class Modal extends Component {
           <ImagePickWrapper>
             {images[currentColor].urls.map((image, index) => (
               <ImagePicker
-                src={image}
-                height='90%'
                 key={index}
                 data-index={index}
                 active={currentImage === index}
                 onClick={this._changeImage}
-              />
+              >
+                <img
+                  src={image}
+                  data-index={index}
+                  onClick={this._changeImage}
+                />
+              </ImagePicker>
             ))}
           </ImagePickWrapper>
         </ImageWrapper>
