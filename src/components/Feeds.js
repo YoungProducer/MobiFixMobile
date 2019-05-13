@@ -1,21 +1,21 @@
-import React from 'react'
-import axios from 'axios'
-import $ from 'jquery'
-import PropTypes from 'prop-types'
+import React from 'react';
+import axios from 'axios';
+import $ from 'jquery';
+import PropTypes from 'prop-types';
 
-import Burger from '../containers/Burger'
-import DropDownMenu from '../containers/DropDownMenu'
-import Header from './Header'
-import FeedCard from '../containers/FeedCard'
-import FeedModal from '../containers/FeedModal'
-import Footer from './Footer'
+import Burger from '../containers/Burger';
+import DropDownMenu from '../containers/DropDownMenu';
+import Header from './Header';
+import FeedCard from '../containers/FeedCard';
+import FeedModal from '../containers/FeedModal';
+import Footer from './Footer';
 
 import {
-    StyledWrapper,
-    StyledContentWrapper,
-    StyledShowMore,
-    SrollToTop
-} from './Feeds.styled'
+	StyledWrapper,
+	StyledContentWrapper,
+	StyledShowMore,
+	SrollToTop
+} from './Feeds.styled';
 
 // const blocks = [
 //     {
@@ -117,116 +117,115 @@ import {
 //   ]
 
 class Feeds extends React.Component {
-    constructor(props) {
-        super(props)
+	constructor(props) {
+		super(props);
 
-        this.state = {
-            blocksData: [],
-            currentPage: 1,
-            lastPage: 0,
-            displayShowMore: true,
-            scrollArrow: true
-        }
+		this.state = {
+			blocksData: [],
+			currentPage: 1,
+			lastPage: 0,
+			displayShowMore: true,
+			scrollArrow: true
+		};
 
-        this.getBlocksData = this.getBlocksData.bind(this)
-        this.showMoreOnClick = this.showMoreOnClick.bind(this)
-    }
+		this.getBlocksData = this.getBlocksData.bind(this);
+		this.showMoreOnClick = this.showMoreOnClick.bind(this);
+	}
 
-    getBlocksData() {
-      this.setState({currentPage: this.state.currentPage + 1})
-      const sendRequest = async () => {
-        try {
-          return await axios.get('http://api.mobifix.tech/cards', {
-            page: this.state.currentPage
-          })
-        } catch(error) {
-          console.log(error)
-        }
-      }
-  
-      const getData = () => {
-        const res = sendRequest()
-        .then(response => {
-          this.setState({
-            blocksData: this.state.blocksData.concat(response.data.blocks),
-            lastPage: response.data.last_page
-          })
-        })
-        .catch(error => {
-          console.log(error)
-        })
-      }
+	getBlocksData() {
+		this.setState({ currentPage: this.state.currentPage + 1 });
+		const sendRequest = async () => {
+			try {
+				return await axios.get(
+					'http://api.mobifix.tech/cards?page=' + this.state.currentPage
+				);
+			} catch (error) {
+				console.log(error);
+			}
+		};
 
-      getData()
-    }
-  
-    componentDidMount() {
-      // need to finish back-end
-      this.getBlocksData()
-    }
-  
-    showMoreOnClick() {
-      // need to finish back-end
+		const getData = () => {
+			const res = sendRequest()
+				.then(response => {
+					this.setState({
+						blocksData: this.state.blocksData.concat(response.data.blocks),
+						lastPage: response.data.last_page
+					});
+				})
+				.catch(error => {
+					console.log(error);
+				});
+		};
 
-      if (this.state.currentPage !== this.state.lastPage + 1) {
-        this.getBlocksData()
-      } 
-      if (this.state.currentPage === this.state.lastPage + 1) {
-        this.setState({
-          displayShowMore: false
-        })
-      }
-    }
+		getData();
+	}
 
-    scrollToTop() {
-      $('html, body').animate({ scrollTop: 0 }, 1000, "swing")
-    }
+	componentDidMount() {
+		// need to finish back-end
+		this.getBlocksData();
+	}
 
-    render() {
-        const {
-          fmVisible
-        } = this.props
+	showMoreOnClick() {
+		// need to finish back-end
 
-        return(
-            <>
-                <StyledWrapper>
-                    <DropDownMenu />
-                    <Header />
-                    <Burger />
-                    <StyledContentWrapper>
-                        {this.state.blocksData.map((block, index) => {
-                            return block.cards.map((card, cardindex) => (
-                                    <FeedCard 
-                                        key={cardindex}
-                                        src={card.image} 
-                                        header={card.header}
-                                        text={card.text}
-                                        date={card.date}
-                                    />
-                                ))
-                        })}
-                      <StyledShowMore
-                        pose={this.state.displayShowMore ? 'init' : 'hide'}
-                        onClick={this.showMoreOnClick}
-                      >Показати більше
-                      </StyledShowMore>
-                      <SrollToTop
-                        pose={fmVisible ? 'hide' : 'init'}
-                        onClick={this.scrollToTop}
-                      >
-                        <img src='../img/arrow-top.svg' height='15px'/>
-                      </SrollToTop>
-                    </StyledContentWrapper>
-                    <FeedModal />
-                </StyledWrapper>
-                <Footer />
-            </>
-        )
-    }
+		if (this.state.currentPage !== this.state.lastPage + 1) {
+			this.getBlocksData();
+		}
+		if (this.state.currentPage === this.state.lastPage + 1) {
+			this.setState({
+				displayShowMore: false
+			});
+		}
+	}
+
+	scrollToTop() {
+		$('html, body').animate({ scrollTop: 0 }, 1000, 'swing');
+	}
+
+	render() {
+		const { fmVisible } = this.props;
+
+		return (
+			<>
+				<StyledWrapper>
+					<DropDownMenu />
+					<Header />
+					<Burger />
+					<StyledContentWrapper>
+						{this.state.blocksData.map((block, index) => {
+							return block.cards.map((card, cardindex) => (
+								<FeedCard
+									key={cardindex}
+									src={card.image}
+									header={card.header}
+									text={card.text}
+									date={card.date}
+								/>
+							));
+						})}
+						<StyledShowMore
+							pose={this.state.displayShowMore ? 'init' : 'hide'}
+							onClick={this.showMoreOnClick}
+						>
+							Показати більше
+						</StyledShowMore>
+						<SrollToTop
+							pose={fmVisible ? 'hide' : 'init'}
+							onClick={this.scrollToTop}
+						>
+							<img src='../img/arrow-top.svg' height='15px' />
+						</SrollToTop>
+					</StyledContentWrapper>
+					<FeedModal />
+				</StyledWrapper>
+				<Footer />
+			</>
+		);
+	}
 }
 
 Feeds.propTypes = {
-  fmVisible: PropTypes.bool.isRequired
-}
+	fmVisible: PropTypes.bool.isRequired
+};
 
-export default Feeds
+export default Feeds;
