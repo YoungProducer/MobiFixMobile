@@ -45,4 +45,5 @@ export const StyledButton = styled.button`
     border-radius: 3px;
     background-image: linear-gradient(to top, #0071ca, #399be7);
     color: #fff;
+    margin-bottom: 40px;
 `

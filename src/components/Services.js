@@ -20,6 +20,7 @@ class Services extends React.Component {
         <Burger />
         <ServicesList />
         <StatementSender />
+        <Footer />
       </StyledWrapper>
     )
   }
