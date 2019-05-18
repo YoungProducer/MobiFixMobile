@@ -6,7 +6,9 @@ import {
   StyledListWrapper,
   StyledList,
   StyledListItem,
-  StyledLink
+  StyledLink,
+  MainList,
+  MainItem
 } from './DropDownMenu.styled'
 
 const phoneList = [
@@ -48,74 +50,76 @@ class DropDownMenu extends React.Component {
         <StyledListWrapper pose={burgerState ? 'lwActive' : 'lwInit'}>
           <StyledList
             pose={burgerState && !phonesListState ? 'listActive' : 'listInit'}
+            justify='center'
           >
-            <StyledListItem
-              onClick={() => {
-                onTogglePhonesListState(true)
-              }}
-            >
-              <StyledLink>Ремонт</StyledLink>
-            </StyledListItem>
+                <MainItem
+                  onClick={() => {
+                    onTogglePhonesListState(true)
+                  }}
+                >
+                  <StyledLink>Ремонт</StyledLink>
+                </MainItem>
 
-                        <StyledListItem
-                            onClick={() => {
-                                onTogglePhonesListState(false)
-                            }}
-                        >
-                            <NavLink
-                                to="/accessories"
-                            >
-                                <StyledLink>
-                                    Аксесуари
-                                </StyledLink>
-                            </NavLink>
-                        </StyledListItem>
+                <MainItem
+                    onClick={() => {
+                        onTogglePhonesListState(false)
+                    }}
+                >
+                    <NavLink
+                        to="/accessories"
+                    >
+                        <StyledLink>
+                            Аксесуари
+                        </StyledLink>
+                    </NavLink>
+                </MainItem>
 
-                        <StyledListItem
-                            onClick={() => {
-                                onTogglePhonesListState(false)
-                            }}
-                        >
-                            <NavLink
-                                to="/feeds"
-                            >
-                                <StyledLink>
-                                    Необхідно знати
-                                </StyledLink>
-                            </NavLink>
-                        </StyledListItem>
+                <MainItem
+                    onClick={() => {
+                        onTogglePhonesListState(false)
+                    }}
+                >
+                    <NavLink
+                        to="/feeds"
+                    >
+                        <StyledLink>
+                            Необхідно знати
+                        </StyledLink>
+                    </NavLink>
+                </MainItem>
 
-                        <StyledListItem
-                            onClick={() => {
-                                onTogglePhonesListState(false)
-                            }}
-                        >
-                            <NavLink
-                                to="/contacts"
-                            >
-                                <StyledLink>
-                                    Контакти
-                                </StyledLink>
-                            </NavLink>
-                        </StyledListItem>
+                <MainItem
+                    onClick={() => {
+                        onTogglePhonesListState(false)
+                    }}
+                >
+                    <NavLink
+                        to="/contacts"
+                    >
+                        <StyledLink>
+                            Контакти
+                        </StyledLink>
+                    </NavLink>
+                </MainItem>
 
-                        <StyledListItem
-                            onClick={() => {
-                                onTogglePhonesListState(false)
-                            }}
-                        >
-                            <NavLink
-                                to="/about"
-                            >
-                                <StyledLink>
-                                    Чому ми
-                                </StyledLink>
-                            </NavLink>
-                        </StyledListItem>
-                    </StyledList>
+                <MainItem
+                    onClick={() => {
+                        onTogglePhonesListState(false)
+                    }}
+                >
+                    <NavLink
+                        to="/about"
+                    >
+                        <StyledLink>
+                            Чому ми
+                        </StyledLink>
+                    </NavLink>
+                </MainItem>
+            </StyledList>
 
           <StyledList
             pose={burgerState && phonesListState ? 'listActive' : 'listInit'}
+            justify='space-around'
           >
             {this.state.phones.map((phone, index) => {
               return (

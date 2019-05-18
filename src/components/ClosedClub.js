@@ -2,6 +2,8 @@ import React from 'react'
 import axios from 'axios'
 import PropsTypes from 'prop-types'
 
+import $ from 'jquery'
+
 import { 
     StyledWrapper,
     StyledText,
@@ -10,7 +12,9 @@ import {
     StyledInput,
     StyledPassiveLine,
     StyledActiveLine,
-    StyledButton
+    StyledButton,
+    Info,
+    InfoBlock
 } 
 from './ClosedClub.styled'
 
@@ -27,6 +31,7 @@ class ClosedClub extends React.Component {
 
             confirmed: false,
             sended: false,
+            infoBlock: false
         }
 
         this._nameInputOnClick = this._nameInputOnClick.bind(this)
@@ -72,6 +77,8 @@ class ClosedClub extends React.Component {
     }
 
     _numberInputOnChange(event) {
+        $(this.numberInput).val($(this.numberInput).val().replace(/\D/g, ''))
+
         this.setState({
             numberInputValue: event.target.value
         })
@@ -147,9 +154,24 @@ class ClosedClub extends React.Component {
     }
 
     render() {
+        const { infoBlock } = this.state
+        const pose = infoBlock ? 'active' : 'init'
+
         return(
             <StyledWrapper>
                 <StyledForm>
+                    <Info
+                        onClick={() => this.setState({infoBlock: !infoBlock})}
+                    >i</Info>
+
+                    <InfoBlock pose={pose}>
+                        <p>- Розіграш аксесуарів</p>
+                        <p>- Знижки на всі види послуг</p>
+                                                        
+                        <p>- Розіграш безкоштовної поклейки захисного скла </p> 
+                        <p>- Безкоштовна прошивка</p> 
+                        <p>- Безкоштовна чистка AirPods</p>
+                    </InfoBlock>
                 
                     <StyledText>
                         Стань учасником закритого клубу

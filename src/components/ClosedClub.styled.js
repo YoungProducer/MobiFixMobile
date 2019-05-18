@@ -104,3 +104,45 @@ export const StyledButton = styled(Button)`
     color: #fff;
     outline: none;
 `
+
+export const Info = styled.div`
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border: 3px solid #ccd0d2;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 10px;
+    right: 10px;
+    box-sizing: border-box;
+`
+
+const InfoBlockPosed = posed.div({
+    init: {
+        opacity: 0,
+        applyAtEnd: { display: 'none' },
+    },
+    active: {
+        opacity: 1,
+        applyAtStart: { display: 'block' },
+    }
+})
+
+export const InfoBlock = styled(InfoBlockPosed)`
+    position: absolute;
+    padding: 10px;
+    top: 45px;
+    left: 10px;
+    right: 10px;
+    z-index: 100;
+    background-color: #fff;
+    color: #000;
+    border: 3px solid #ccd0d2;
+    border-radius: 5px;
+
+    p {
+        line-height: 20px;
+    }
+`

@@ -23,11 +23,21 @@ export default () => (
       />
       <div>
         <p>Для зв'язку та питань</p>
-        <p>+38 (097) 96 96 96 5</p>
-        <p>+38 (063) 96 96 96 5</p>
-        <p>
-          Instagram:{' '}
-          <a href='https://instagram.com/mobifix_te?utm_source=ig_profile_share&igshid=wjpr9vzwmx6b'>
+        <p><a style={{textDecoration: 'none'}} href='tel:+380979696965'>+38 (097) 96 96 96 5</a></p>
+        <p><a style={{textDecoration: 'none'}} href='tel:+380639696965'>+38 (063) 96 96 96 5</a></p>
+        <p
+          style={{textAlign: 'left'}}
+        >
+          <img 
+            src='../img/instagram.png' 
+            style={{float: 'left', marginRight: '10px', marginLeft: '5px'}} 
+            width='20px'
+          />
+          <a
+            style={{
+              display: 'inline-block',
+            }} 
+            href='https://instagram.com/mobifix_te?utm_source=ig_profile_share&igshid=wjpr9vzwmx6b'>
             mobifix_te
           </a>
         </p>

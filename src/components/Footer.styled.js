@@ -22,6 +22,7 @@ export const StyledListItem = styled.li`
 export const StyledLink = styled.a`
     text-decoration: none;
     color: #fff;
+    display: inline-block;
 `
 
 export const StyledLinkText = styled.h5`

@@ -36,12 +36,6 @@ class Footer extends React.Component {
               </StyledListItem>
 
               <StyledListItem>
-                <NavLink to='/accessories'>
-                  <StyledLinkText>Гарантія</StyledLinkText>
-                </NavLink>
-              </StyledListItem>
-
-              <StyledListItem>
                 <NavLink to='/about'>
                   <StyledLinkText>Чому ми</StyledLinkText>
                 </NavLink>
@@ -64,8 +58,9 @@ class Footer extends React.Component {
               </StyledListItem>
 
               <StyledListItem>
-                <span>Інстаграм </span>
-                <StyledLink href='https://instagram.com/mobifix_te?utm_source=ig_profile_share&igshid=wjpr9vzwmx6b'>
+                <span style={{float: 'left', marginRight: '10px'}}><img src='../img/instagram.png' width='20px'/> </span>
+                <StyledLink
+                  href='https://instagram.com/mobifix_te?utm_source=ig_profile_share&igshid=wjpr9vzwmx6b'>
                   mobifix_te
                 </StyledLink>
               </StyledListItem>

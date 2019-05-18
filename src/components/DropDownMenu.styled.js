@@ -48,7 +48,37 @@ export const List = posed.ul({
     }
 })
 
+export const MainListPosed = posed.ul({
+    listInit: {
+        y: '-100%',
+        transition: {
+            duration: 400,
+            ease: 'easeInOut'
+        },
+        applyAtEnd: { display: 'none' }
+    },
+    listActive: {
+        y: '0%',
+        transition: {
+            duration: 400,
+            ease: 'easeInOut'
+        },
+        staggerChildren: 200,
+        delayChildren: 400,
+        applyAtStart: { display: 'block' }
+    }
+})
+
 export const StyledList = styled(List)`
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: ${props => props.justify};
+    align-items: center;
+`
+
+export const MainList = styled(MainListPosed)`
     width: 100%;
     height: 100%;
     display: flex;
@@ -56,6 +86,7 @@ export const StyledList = styled(List)`
     justify-content: space-around;
     align-items: center;
 `
+
 
 export const ListItem = posed.li({
     listInit: {
@@ -77,6 +108,17 @@ export const StyledListItem = styled(ListItem)`
     background-color: #fff;
     list-style: none;
     line-height: 30px;
+`
+
+
+export const MainItem = styled(ListItem)`
+    width: 70%;
+    height: 30px;
+    border-radius: 15px;
+    background-color: #fff;
+    list-style: none;
+    line-height: 30px;
+    margin-bottom: 30px;
 `
 
 export const StyledLink = styled.h5`
