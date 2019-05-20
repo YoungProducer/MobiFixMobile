@@ -11,20 +11,20 @@ import Contacts from './components/Contacts';
 import './App.sass';
 
 class App extends React.Component {
-  render() {
-    return (
-      <Router>
-        <Switch>
-          <Route path='/' component={Home} exact />
-          <Route path='/services' component={Services} />
-          <Route path='/accessories' component={Accessories} />
-          <Route path='/about' component={About} />
-          <Route path='/feeds' component={Feeds} />
-          <Route path='/contacts' component={Contacts} />
-        </Switch>
-      </Router>
-    );
-  }
+	render() {
+		return (
+			<Router>
+				<Switch>
+					<Route path='/' component={Home} exact />
+					<Route path='/services' component={Services} />
+					<Route path='/accessories' component={Accessories} />
+					<Route path='/about' component={About} />
+					<Route path='/feeds' component={Feeds} />
+					<Route path='/contacts' component={Contacts} />
+				</Switch>
+			</Router>
+		);
+	}
 }
 
 export default App;
