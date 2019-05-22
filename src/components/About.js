@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types'
+import { NavLink } from 'react-router-dom'
 
 import Header from './Header';
 import Burger from '../containers/Burger';
@@ -23,6 +25,8 @@ class About extends React.Component {
 
 	render() {
 		const { isOpen } = this.state;
+		const { onTogglePhonesListState } = this.props
+
 		return (
 			<>
 				<StyledWrapper>
@@ -105,38 +109,38 @@ class About extends React.Component {
 						</DropDown>
 						<StyledQuestionBlock>
 							<Question>
-								Скільки це займе <Accent>часу</Accent>?
+								Скільки це займе часу?
 							</Question>
-							<Answer>Все залежить від послуг які ви обрали.</Answer>
+							<Answer>Все залежить від послуг, які ви обрали.</Answer>
 						</StyledQuestionBlock>
 						<StyledQuestionBlock>
 							<Question>
-								Як взнати <Accent>ціни</Accent> на наші послуги?
+								Як взнати ціни на наші послуги?
 							</Question>
 							<Answer>
-								Натисніть <Accent>ремонт</Accent> та виберіть бажаний телефон.
+								Натисніть <Accent onClick={() => onTogglePhonesListState(true)}>ремонт</Accent> та виберіть бажаний телефон.
 								Після цього ви зможете побачити всі доступні послуги стосовно
-								цього телефону та <Accent>ціни</Accent> на них.
+								цього телефону та ціни на них.
 							</Answer>
 						</StyledQuestionBlock>
 						<StyledQuestionBlock>
 							<Question>
-								Де нас <Accent>знайти</Accent>?
+								Де нас знайти?
 							</Question>
 							<Answer>
 								Ви можете нас знайти за адресою{' '}
-								<Accent>вул. Гетьмана Сагайдачного 1</Accent>. А також
+								вул. Гетьмана Сагайдачного 1. А також
 								подивитися наше місце розташування, перейшовши на вкладку{' '}
-								<Accent>"Контакти"</Accent>.
+								<NavLink to='/contacts'><Accent>"Контакти"</Accent></NavLink>.
 							</Answer>
 						</StyledQuestionBlock>
 						<StyledQuestionBlock>
 							<Question>
-								Які наші <Accent>особливості</Accent>?
+								Які наші особливості?
 							</Question>
 							<Answer>
-								При покупці аксесуарів, ми можемо доставити вам їх особисто та
-								абсолютно <Accent>безкоштовно</Accent>, у межах Тернополя
+								При покупці <NavLink to='/accessories'><Accent>аксесуарів</Accent></NavLink>, ми можемо доставити вам їх особисто та
+								абсолютно, у межах Тернополя
 							</Answer>
 						</StyledQuestionBlock>
 					</StyledContentWrapper>
@@ -145,6 +149,10 @@ class About extends React.Component {
 			</>
 		);
 	}
+}
+
+About.propTypes = {
+	onTogglePhonesListState: PropTypes.func.isRequired,
 }
 
 export default About;

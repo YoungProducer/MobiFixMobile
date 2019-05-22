@@ -139,8 +139,7 @@ export const InfoBlock = styled(InfoBlockPosed)`
     z-index: 100;
     background-color: #fff;
     color: #000;
-    border: 3px solid #ccd0d2;
-    border-radius: 5px;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, .5);
 
     p {
         line-height: 20px;
