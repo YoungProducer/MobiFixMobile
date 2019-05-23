@@ -91,21 +91,21 @@ export const Buttons = styled.div`
 export const Submit = styled.button`
 	padding: 0 1.25em;
 	line-height: 40px;
-	border-radius: 20px;
+	border-radius: 40px;
 	border: none;
-	background: ${lighten(0.15, '#0070c8')};
+	background-image: linear-gradient(to top, #0071ca, #399be7);
 	font-size: 0.9em;
 	outline: none;
 	color: #fff;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 `;
 
 export const Total = styled.div`
 	padding: 0 1.25em;
 	line-height: 40px;
 	border-radius: 20px;
-	background: ${lighten(0.15, '#0070c8')};
+	background-image: linear-gradient(to top, #0071ca, #399be7);
 	color: #fff;
 	font-size: 0.9em;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 `;
