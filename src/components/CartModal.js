@@ -77,7 +77,7 @@ class Modal extends Component {
 								/>
 							))}
 							<Buttons>
-								<Total>${this._total()}</Total>
+								<Total>{this._total()} грн.</Total>
 								<Submit
 									onClick={() => this.setState({ confirmationIsVisible: true })}
 								>
