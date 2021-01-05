@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "@fullpage/react-fullpage": "^0.1.13",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "color-thief-node": "^1.0.2",
     "fs": "0.0.1-security",
     "fullpage.js": "^3.0.4",
